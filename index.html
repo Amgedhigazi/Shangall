@@ -1,0 +1,1275 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <template id="__bundler_thumbnail" data-bg-color="#231f19">
+    <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+      <rect width="1200" height="800" fill="#231f19"/>
+      <text x="600" y="380" font-family="serif" font-size="140" fill="#b5522f" text-anchor="middle">SH</text>
+      <text x="600" y="470" font-family="sans-serif" font-size="36" letter-spacing="8" fill="#f2ede2" text-anchor="middle">SHANGAL HASSAN</text>
+    </svg>
+  </template>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Work+Sans:wght@300;400;500;600&family=Cairo:wght@300;400;500;600;700&family=Amiri:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    body { margin: 0; background: #f2ede2; }
+    * { box-sizing: border-box; }
+    ::selection { background: #b5522f; color: #f2ede2; }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes modalIn { from { opacity: 0; transform: translateY(18px) scale(0.98); } to { opacity: 1; transform: translateY(0) scale(1); } }
+    @keyframes cardIn { 0% { opacity: 0; transform: translateY(36px) scale(0.9) rotate(-2deg); } 60% { opacity: 1; transform: translateY(-4px) scale(1.02) rotate(0.5deg); } 100% { opacity: 1; transform: translateY(0) scale(1) rotate(0deg); } }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes cornerSweep { from { background-position: 0 0, 0% 0%; } to { background-position: 0 0, 100% 100%; } }
+  </style>
+</helmet>
+
+<div style="{{ themeVars }} background:var(--bg-page); color:var(--text-page); font-family:var(--font-body); width:100%; overflow-x:hidden; position:relative;" dir="{{ dir }}">
+
+  <!-- NAV -->
+  <div style="position:sticky; top:0; z-index:50; background:var(--bg-nav); backdrop-filter:blur(8px); border-bottom:1px solid var(--border-nav);">
+    <div style="max-width:1280px; margin:0 auto; padding:18px 40px; display:flex; align-items:center; justify-content:space-between; gap:24px; flex-wrap:wrap;">
+      <div style="font-family:var(--font-body); font-size:22px; letter-spacing:0.04em; font-weight:600;">Shangal Hassan</div>
+      <div style="display:flex; gap:32px; flex-wrap:wrap; align-items:center;">
+        <sc-for list="{{ navItems }}" as="item" hint-placeholder-count="6">
+          <a href="{{ item.href }}" onclick="{{ item.onClick }}" style="color:var(--text-page); text-decoration:none; font-size:13px; letter-spacing:0.08em; text-transform:uppercase; opacity:0.75;" style-hover="opacity:1; color:#b5522f;">{{ item.label }}</a>
+        </sc-for>
+        <button onclick="{{ onToggleLang }}" style="padding:8px 14px; border:1px solid var(--border-nav); background:transparent; color:var(--text-page); font-size:12px; letter-spacing:0.05em; cursor:pointer; font-family:var(--font-body); border-radius:2px;" style-hover="border-color:#b5522f; color:#b5522f;">{{ T.langBtn }}</button>
+        <button onclick="{{ onToggleDark }}" style="padding:8px 14px; border:1px solid var(--border-nav); background:transparent; color:var(--text-page); font-size:12px; letter-spacing:0.05em; cursor:pointer; font-family:var(--font-body); border-radius:2px;" style-hover="border-color:#b5522f; color:#b5522f;">{{ darkToggleLabel }}</button>
+      </div>
+    </div>
+  </div>
+
+  <div style="display:{{ homeDisplay }};">
+
+  <!-- HERO -->
+  <div data-screen-label="Hero" data-reveal style="position:relative; min-height:92vh; display:flex; align-items:flex-end; padding:0 40px 0 40px; opacity:0; transform:translateY(20px); transition:opacity 1.1s ease, transform 1.1s ease;">
+    <img src="uploads/419062242_18263673826207651_9101252513906964832_n.jpg" alt="Dr. Shangal Hassan" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center 25%;"/>
+    <div style="position:absolute; inset:0; background:linear-gradient(0deg, rgba(20,17,12,0.92) 0%, rgba(20,17,12,0.5) 55%, rgba(20,17,12,0.2) 100%);"></div>
+    <div style="position:relative; max-width:1280px; margin:0 auto; width:100%; padding:120px 0 72px 0; color:#f2ede2;">
+      <div style="font-size:13px; letter-spacing:0.22em; text-transform:uppercase; opacity:0.8; margin-bottom:22px;">{{ T.heroEyebrow }}</div>
+      <h1 style="font-family:{{ heroHeadingFont }}; font-weight:600; font-size:clamp(36px,5.5vw,76px); line-height:1.15; margin:0 0 24px 0;">{{ T.heroName1 }}<br/>{{ T.heroName2 }}</h1>
+      <p style="max-width:560px; font-size:18px; line-height:1.6; font-weight:300; opacity:0.92; margin:0 0 36px 0;">{{ T.heroBody }}</p>
+      <div style="display:flex; gap:16px; flex-wrap:wrap;">
+        <a href="#works" style="padding:14px 28px; background:#b5522f; color:#f2ede2; text-decoration:none; font-size:13px; letter-spacing:0.1em; text-transform:uppercase; transition:background 0.25s ease;" style-hover="background:#c96339;">{{ T.heroViewWork }}</a>
+        <a href="#biography" style="padding:14px 28px; border:1px solid rgba(242,237,226,0.5); color:#f2ede2; text-decoration:none; font-size:13px; letter-spacing:0.1em; text-transform:uppercase; transition:border-color 0.25s ease;" style-hover="border-color:#f2ede2;">{{ T.heroBiography }}</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ARTIST STATEMENT -->
+  <div data-screen-label="Statement" data-reveal style="max-width:920px; margin:0 auto; padding:140px 40px; opacity:0; transform:translateY(24px); transition:opacity 0.9s ease, transform 0.9s ease;">
+    <div style="font-size:13px; letter-spacing:0.2em; text-transform:uppercase; color:#b5522f; margin-bottom:24px;">{{ T.statementEyebrow }}</div>
+    <p style="font-family:var(--font-body); font-weight:500; font-size:clamp(26px,3.4vw,38px); line-height:1.45; margin:0 0 32px 0;">{{ T.statementQuote }}</p>
+    <p style="font-size:17px; line-height:1.85; font-weight:300; opacity:0.85; margin:0 0 20px 0;">{{ T.statementP1 }}</p>
+    <p style="font-size:17px; line-height:1.85; font-weight:300; opacity:0.85; margin:0;">{{ T.statementP2 }}</p>
+  </div>
+
+  <!-- WORKS -->
+  <div id="works" data-screen-label="Works" data-reveal style="background:var(--bg-dark); color:var(--text-on-dark); padding:100px 40px 120px 40px; opacity:0; transform:translateY(24px); transition:opacity 0.9s ease, transform 0.9s ease;">
+    <div style="max-width:1280px; margin:0 auto;">
+      <div style="display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:24px; margin-bottom:56px;">
+        <div>
+          <div style="font-size:13px; letter-spacing:0.2em; text-transform:uppercase; opacity:0.6; margin-bottom:16px;">{{ T.worksEyebrow }}</div>
+          <h2 style="font-family:var(--font-body); font-weight:500; font-size:clamp(32px,4vw,52px); margin:0;">{{ T.worksHeading }}</h2>
+        </div>
+        <div style="display:flex; gap:8px; flex-wrap:wrap;">
+          <sc-for list="{{ categories }}" as="c" hint-placeholder-count="4">
+            <a href="{{ c.anchor }}" style="padding:10px 20px; border:1px solid rgba(242,237,226,0.3); color:#f2ede2; text-decoration:none; font-family:var(--font-body); font-size:13px; letter-spacing:0.05em; opacity:0.7; transition:opacity 0.2s ease, border-color 0.2s ease;" style-hover="opacity:1; border-color:#f2ede2;">{{ c.medium }}</a>
+          </sc-for>
+        </div>
+      </div>
+
+      <sc-for list="{{ categories }}" as="c" hint-placeholder-count="4">
+        <div id="{{ c.id }}" style="margin-bottom:88px;">
+          <div style="display:flex; align-items:baseline; justify-content:space-between; gap:16px; margin-bottom:32px; border-bottom:1px solid rgba(242,237,226,0.15); padding-bottom:16px;">
+            <div style="display:flex; align-items:baseline; gap:16px;">
+              <h3 style="font-family:var(--font-body); font-weight:500; font-style:italic; font-size:28px; margin:0;">{{ c.medium }}</h3>
+              <span style="font-size:13px; opacity:0.45;">{{ c.count }}</span>
+            </div>
+            <div style="display:flex; gap:10px;">
+              <button onclick="{{ c.scrollPrev }}" style="width:38px; height:38px; border-radius:50%; border:1px solid rgba(242,237,226,0.3); background:transparent; color:#f2ede2; cursor:pointer; font-size:16px;" style-hover="border-color:#f2ede2;">&larr;</button>
+              <button onclick="{{ c.scrollNext }}" style="width:38px; height:38px; border-radius:50%; border:1px solid rgba(242,237,226,0.3); background:transparent; color:#f2ede2; cursor:pointer; font-size:16px;" style-hover="border-color:#f2ede2;">&rarr;</button>
+            </div>
+          </div>
+          <div ref="{{ c.railRef }}" data-rail data-direction="{{ c.direction }}" style="display:flex; gap:28px; overflow-x:hidden; padding-bottom:12px;">
+            <sc-for list="{{ c.loopItems }}" as="w" hint-placeholder-count="3">
+              <div style="flex:0 0 280px; display:flex; flex-direction:column; gap:16px; cursor:pointer; transition:transform 0.35s ease;" style-hover="transform:translateY(-6px);" onclick="{{ w.onOpen }}">
+                <div style="position:relative; aspect-ratio:1/1; overflow:hidden; background:#2c261d;">
+                  <sc-if value="{{ w.hasPhoto }}" hint-placeholder-val="{{ false }}">
+                    <img src="{{ w.image }}" alt="{{ w.title }}" style="width:100%; height:100%; object-fit:cover; display:block; transition:transform 0.6s ease;" style-hover="transform:scale(1.06);"/>
+                  </sc-if>
+                  <sc-if value="{{ w.hasPhotoInverse }}" hint-placeholder-val="{{ false }}">
+                    <div style="{{ w.style }} position:absolute; inset:0; display:flex; align-items:center; justify-content:center; font-family:monospace; font-size:11px; letter-spacing:0.08em; text-transform:uppercase; color:rgba(242,237,226,0.55); text-align:center; padding:16px;">{{ w.medium }} {{ T.photoNeeded }}</div>
+                  </sc-if>
+                </div>
+                <div>
+                  <div style="font-family:var(--font-body); font-size:20px; font-style:italic;">{{ w.title }}</div>
+                  <div style="font-size:13px; opacity:0.55; margin-top:4px;">{{ w.caption }}</div>
+                  <div style="font-size:13px; opacity:0.75; margin-top:8px; color:#d98e5f;">{{ w.priceLabel }}</div>
+                </div>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+      </sc-for>
+      <p style="margin:0; font-size:13px; opacity:0.45; max-width:560px;">{{ T.worksFooter }}</p>
+    </div>
+  </div>
+
+  <!-- BIOGRAPHY -->
+  <div id="biography" data-screen-label="Biography" data-reveal style="max-width:1280px; margin:0 auto; padding:140px 40px; display:grid; grid-template-columns:1fr 1.3fr; gap:80px; align-items:start; opacity:0; transform:translateY(24px); transition:opacity 0.9s ease, transform 0.9s ease;">
+    <div style="position:sticky; top:100px;">
+      <img src="uploads/IMG-20210401-WA0032.jpg" alt="Dr. Shangal Hassan portrait" style="width:100%; aspect-ratio:3/4; object-fit:cover; object-position:center 30%;"/>
+    </div>
+    <div>
+      <div style="font-size:13px; letter-spacing:0.2em; text-transform:uppercase; color:#b5522f; margin-bottom:24px;">{{ T.bioEyebrow }}</div>
+      <h2 style="font-family:var(--font-body); font-weight:500; font-size:clamp(30px,3.6vw,44px); margin:0 0 32px 0; line-height:1.2;">{{ T.bioHeading }}</h2>
+      <p style="font-size:17px; line-height:1.85; font-weight:300; opacity:0.85; margin:0 0 20px 0;">{{ T.bioP1 }}</p>
+      <p style="font-size:17px; line-height:1.85; font-weight:300; opacity:0.85; margin:0 0 20px 0;">{{ T.bioP2 }}</p>
+      <p style="font-size:17px; line-height:1.85; font-weight:300; opacity:0.85; margin:0 0 48px 0;">{{ T.bioP3 }}</p>
+
+      <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:32px; border-top:1px solid rgba(35,31,25,0.15); padding-top:32px;">
+        <div>
+          <div style="font-family:var(--font-body); font-size:36px; color:#b5522f;">1985</div>
+          <div style="font-size:13px; opacity:0.65; margin-top:6px;">{{ T.bioStat1 }}</div>
+        </div>
+        <div>
+          <div style="font-family:var(--font-body); font-size:36px; color:#b5522f;">Dean</div>
+          <div style="font-size:13px; opacity:0.65; margin-top:6px;">{{ T.bioStat2 }}</div>
+        </div>
+        <div>
+          <div style="font-family:var(--font-body); font-size:36px; color:#b5522f;">4</div>
+          <div style="font-size:13px; opacity:0.65; margin-top:6px;">{{ T.bioStat3 }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EXHIBITIONS TEASER -->
+  <div id="exhibitions" data-screen-label="Exhibitions Teaser" data-reveal style="background:var(--bg-warm); padding:120px 40px; opacity:0; transform:translateY(24px); transition:opacity 0.9s ease, transform 0.9s ease;">
+    <div style="max-width:1280px; margin:0 auto; display:flex; align-items:flex-end; justify-content:space-between; flex-wrap:wrap; gap:32px;">
+      <div>
+        <div style="font-size:13px; letter-spacing:0.2em; text-transform:uppercase; color:#b5522f; margin-bottom:24px;">{{ T.exTeaserEyebrow }}</div>
+        <h2 style="font-family:var(--font-body); font-weight:500; font-size:clamp(30px,3.6vw,44px); margin:0; max-width:560px;">{{ T.exTeaserHeading }}</h2>
+      </div>
+      <button onclick="{{ onOpenArchive }}" style="padding:16px 32px; background:var(--bg-dark); color:var(--text-on-dark); border:none; font-family:var(--font-body); font-size:13px; letter-spacing:0.08em; text-transform:uppercase; cursor:pointer; white-space:nowrap;" style-hover="background:#3a332a;">{{ T.exTeaserBtn }}</button>
+    </div>
+  </div>
+
+  <!-- RECOGNITION -->
+  <div data-screen-label="Recognition" data-reveal style="background:var(--bg-page); padding:120px 40px; opacity:0; transform:translateY(24px); transition:opacity 0.9s ease, transform 0.9s ease;">
+    <div style="max-width:1280px; margin:0 auto;">
+      <div style="font-size:13px; letter-spacing:0.2em; text-transform:uppercase; color:#b5522f; margin-bottom:24px;">{{ T.recogEyebrow }}</div>
+      <h2 style="font-family:var(--font-body); font-weight:500; font-size:clamp(30px,3.6vw,44px); margin:0 0 24px 0;">{{ T.recogHeading }}</h2>
+      <p style="font-size:17px; line-height:1.85; font-weight:300; opacity:0.8; max-width:680px; margin:0 0 56px 0;">{{ T.recogP1 }}</p>
+      <div style="display:grid; grid-template-columns:repeat(auto-fill, minmax(260px,1fr)); gap:20px;">
+        <sc-for list="{{ recognitionPhotos }}" as="p" hint-placeholder-count="3">
+          <img src="{{ p.src }}" alt="" style="width:100%; aspect-ratio:3/4; object-fit:cover; object-position:{{ p.position }}; display:block;"/>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTACT / FOOTER -->
+  <div id="contact" data-screen-label="Contact" data-reveal style="background:var(--bg-dark); color:var(--text-on-dark); padding:120px 40px 48px 40px; opacity:0; transform:translateY(24px); transition:opacity 0.9s ease, transform 0.9s ease;">
+    <div style="max-width:1280px; margin:0 auto;">
+      <div style="display:grid; grid-template-columns:1.4fr 1fr; gap:60px; padding-bottom:80px; border-bottom:1px solid rgba(242,237,226,0.15);">
+        <div>
+          <h2 style="font-family:{{ headingFontOverride }}; font-weight:600; font-size:clamp(32px,4.4vw,56px); margin:0 0 28px 0; line-height:1.3;">{{ T.contactHeading }}</h2>
+          <a href="mailto:shangalart@gmail.com" style="color:#f2ede2; font-size:20px; text-decoration:none; border-bottom:1px solid rgba(242,237,226,0.4);" style-hover="border-color:#f2ede2;">shangalart@gmail.com</a>
+
+          <form onsubmit="{{ onSubmitInquiry }}" style="display:flex; flex-direction:column; gap:14px; margin-top:40px; max-width:480px;">
+            <input type="text" required value="{{ inquiryName }}" onchange="{{ onInquiryName }}" placeholder="{{ T.formNamePh }}" style="padding:14px 16px; background:rgba(242,237,226,0.06); border:1px solid rgba(242,237,226,0.25); color:#f2ede2; font-size:14px; font-family:var(--font-body); border-radius:2px;"/>
+            <input type="email" required value="{{ inquiryEmail }}" onchange="{{ onInquiryEmail }}" placeholder="{{ T.formEmailPh }}" style="padding:14px 16px; background:rgba(242,237,226,0.06); border:1px solid rgba(242,237,226,0.25); color:#f2ede2; font-size:14px; font-family:var(--font-body); border-radius:2px;"/>
+            <textarea required rows="4" value="{{ inquiryMessage }}" onchange="{{ onInquiryMessage }}" placeholder="{{ T.formMessagePh }}" style="padding:14px 16px; background:rgba(242,237,226,0.06); border:1px solid rgba(242,237,226,0.25); color:#f2ede2; font-size:14px; font-family:var(--font-body); border-radius:2px; resize:vertical;"></textarea>
+            <button type="submit" style="padding:14px 28px; background:#b5522f; color:#f2ede2; border:none; font-size:13px; letter-spacing:0.08em; text-transform:uppercase; cursor:pointer; font-family:var(--font-body); transition:background 0.25s ease;" style-hover="background:#c96339;">{{ T.formSend }}</button>
+            <sc-if value="{{ inquirySent }}" hint-placeholder-val="{{ false }}">
+              <div style="font-size:13px; opacity:0.75; margin-top:4px;">{{ T.formSent }}</div>
+            </sc-if>
+          </form>
+        </div>
+        <div style="display:flex; flex-direction:column; gap:20px; justify-content:flex-end;">
+          <div>
+            <div style="font-size:13px; letter-spacing:0.15em; text-transform:uppercase; opacity:0.5; margin-bottom:8px;">{{ T.contactStudio }}</div>
+            <div style="font-size:16px; font-weight:300;">{{ T.contactStudioVal }}</div>
+          </div>
+          <div>
+            <div style="font-size:13px; letter-spacing:0.15em; text-transform:uppercase; opacity:0.5; margin-bottom:8px;">{{ T.contactAffiliation }}</div>
+            <div style="font-size:16px; font-weight:300;">{{ T.contactAffiliationVal }}</div>
+          </div>
+          <div style="display:flex; gap:20px;">
+            <a href="{{ instagramUrl }}" target="_blank" rel="noopener" style="color:#f2ede2; opacity:0.65; font-size:14px; text-decoration:none; border-bottom:1px solid rgba(242,237,226,0.3);" style-hover="opacity:1;">Instagram</a>
+            <a href="{{ facebookUrl }}" target="_blank" rel="noopener" style="color:#f2ede2; opacity:0.65; font-size:14px; text-decoration:none; border-bottom:1px solid rgba(242,237,226,0.3);" style-hover="opacity:1;">Facebook</a>
+          </div>
+        </div>
+      </div>
+      <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px; padding-top:32px; font-size:13px; opacity:0.5;">
+        <div>{{ T.contactCopyright }}</div>
+        <div style="font-family:var(--font-body); font-style:italic;">{{ T.contactTagline }}</div>
+      </div>
+      <div style="text-align:center; padding-top:24px; font-size:11px; opacity:0.35;">Designed and developed by Amged Higazi</div>
+    </div>
+  </div>
+
+  </div>
+
+  <!-- ARCHIVE PAGE -->
+  <div style="display:{{ archiveDisplay }};">
+    <div data-screen-label="Archive" style="background:var(--bg-warm); min-height:100vh; padding:64px 40px 120px 40px;">
+      <div style="max-width:1280px; margin:0 auto;">
+        <button onclick="{{ onCloseArchive }}" style="background:none; border:none; padding:0; margin-bottom:40px; color:var(--text-page); font-size:13px; letter-spacing:0.08em; text-transform:uppercase; cursor:pointer; opacity:0.65; display:flex; align-items:center; gap:8px;" style-hover="opacity:1;">{{ T.back }}</button>
+        <div style="font-size:13px; letter-spacing:0.2em; text-transform:uppercase; color:#b5522f; margin-bottom:20px;">{{ T.archiveEyebrow }}</div>
+        <h2 style="font-family:var(--font-body); font-weight:500; font-size:clamp(34px,4.2vw,52px); margin:0 0 64px 0; max-width:760px;">{{ T.archiveHeading }}</h2>
+
+        <h3 style="font-family:var(--font-body); font-weight:500; font-style:italic; font-size:26px; margin:0 0 28px 0;">{{ T.exHeading }}</h3>
+        <div style="display:grid; grid-template-columns:repeat(auto-fill, minmax(260px,1fr)); gap:18px; margin-bottom:24px;">
+          <sc-for list="{{ exhibitions }}" as="e" hint-placeholder-count="8">
+            <div style="{{ e.cardStyle }} background:var(--bg-card); padding:22px; box-shadow:0 6px 18px rgba(35,31,25,0.06); transition:transform 0.3s ease, box-shadow 0.3s ease;" style-hover="transform:translateY(-4px); box-shadow:0 12px 26px rgba(35,31,25,0.12);">
+              <div style="font-family:var(--font-body); font-size:20px; color:#b5522f; margin-bottom:8px;">{{ e.year }}</div>
+              <div style="font-size:15px; font-weight:500; line-height:1.35;">{{ e.title }}</div>
+              <div style="font-size:12.5px; opacity:0.6; margin-top:8px; font-weight:300; line-height:1.5;">{{ e.detail }}</div>
+            </div>
+          </sc-for>
+        </div>
+        <button onclick="{{ onToggleExhibitions }}" style="margin:8px 0 88px 0; padding:14px 28px; background:transparent; border:1px solid rgba(35,31,25,0.3); color:var(--text-page); font-family:var(--font-body); font-size:13px; letter-spacing:0.08em; text-transform:uppercase; cursor:pointer;" style-hover="border-color:#231f19;">{{ exhibitionsToggleLabel }}</button>
+
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:60px; margin-bottom:88px;">
+          <div>
+            <h3 style="font-family:var(--font-body); font-weight:500; font-style:italic; font-size:24px; margin:0 0 24px 0;">{{ T.workshopsHeading }}</h3>
+            <div style="display:grid; gap:14px;">
+              <sc-for list="{{ workshopsAwards }}" as="w" hint-placeholder-count="3">
+                <div style="{{ w.cardStyle }} background:var(--bg-card); padding:20px; box-shadow:0 6px 18px rgba(35,31,25,0.06); transition:transform 0.3s ease, box-shadow 0.3s ease;" style-hover="transform:translateY(-4px); box-shadow:0 12px 26px rgba(35,31,25,0.12);">
+                  <div style="font-family:var(--font-body); font-size:17px; color:#b5522f;">{{ w.year }}</div>
+                  <div style="font-size:14px; font-weight:500; margin-top:6px;">{{ w.title }}</div>
+                  <div style="font-size:12.5px; opacity:0.6; margin-top:4px; font-weight:300;">{{ w.detail }}</div>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+          <div>
+            <h3 style="font-family:var(--font-body); font-weight:500; font-style:italic; font-size:24px; margin:0 0 24px 0;">{{ T.publicArtHeading }}</h3>
+            <div style="display:grid; gap:14px;">
+              <sc-for list="{{ publicArt }}" as="p" hint-placeholder-count="4">
+                <div style="{{ p.cardStyle }} background:var(--bg-card); padding:20px; box-shadow:0 6px 18px rgba(35,31,25,0.06); transition:transform 0.3s ease, box-shadow 0.3s ease;" style-hover="transform:translateY(-4px); box-shadow:0 12px 26px rgba(35,31,25,0.12);">
+                  <div style="font-family:var(--font-body); font-size:17px; color:#b5522f;">{{ p.year }}</div>
+                  <div style="font-size:14px; font-weight:500; margin-top:6px;">{{ p.title }}</div>
+                  <div style="font-size:12.5px; opacity:0.6; margin-top:4px; font-weight:300;">{{ p.detail }}</div>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+        </div>
+
+        <h3 style="font-family:var(--font-body); font-weight:500; font-style:italic; font-size:24px; margin:0 0 24px 0;">{{ T.collectionsHeading }}</h3>
+        <div style="display:flex; flex-wrap:wrap; gap:14px;">
+          <sc-for list="{{ collections }}" as="c" hint-placeholder-count="7">
+            <div style="{{ c.cardStyle }} background:var(--bg-card); padding:14px 20px; box-shadow:0 6px 18px rgba(35,31,25,0.06); font-size:13px; transition:transform 0.3s ease, box-shadow 0.3s ease;" style-hover="transform:translateY(-3px); box-shadow:0 10px 22px rgba(35,31,25,0.1);">{{ c.place }} <span style="opacity:0.5;">— {{ c.year }}</span></div>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MEDIA & PUBLICATIONS PAGE -->
+  <div style="display:{{ mediaDisplay }};">
+    <div data-screen-label="Media" style="background:var(--bg-dark); color:var(--text-on-dark); min-height:100vh; padding:64px 40px 120px 40px;">
+      <div style="max-width:1280px; margin:0 auto;">
+        <button onclick="{{ onCloseArchive }}" style="background:none; border:none; padding:0; margin-bottom:40px; color:var(--text-on-dark); font-size:13px; letter-spacing:0.08em; text-transform:uppercase; cursor:pointer; opacity:0.65; display:flex; align-items:center; gap:8px;" style-hover="opacity:1;">{{ T.back }}</button>
+        <div style="font-size:13px; letter-spacing:0.2em; text-transform:uppercase; color:#d98e5f; margin-bottom:20px;">{{ T.mediaEyebrow }}</div>
+        <h2 style="font-family:var(--font-body); font-weight:500; font-size:clamp(34px,4.2vw,52px); margin:0 0 64px 0; max-width:760px;">{{ T.mediaHeading }}</h2>
+        <div style="display:grid; grid-template-columns:repeat(auto-fill, minmax(280px,1fr)); gap:28px;">
+          <sc-for list="{{ mediaClippings }}" as="m" hint-placeholder-count="8">
+            <div style="display:flex; flex-direction:column; gap:12px; cursor:pointer;" onclick="{{ m.onOpen }}">
+              <img src="{{ m.src }}" alt="{{ m.caption }}" style="width:100%; aspect-ratio:3/4; object-fit:cover; display:block; transition:transform 0.35s ease;" style-hover="transform:translateY(-6px);"/>
+              <div style="font-size:13px; opacity:0.6;">{{ m.caption }}</div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PRINTS & SERVICES PAGE -->
+  <div style="display:{{ printsDisplay }};">
+    <div data-screen-label="Prints and Services" style="background:linear-gradient(155deg, #2b1f16 0%, #3a2a1c 42%, #4a3320 100%); color:#f3ead9; min-height:100vh; padding:64px 40px 120px 40px;">
+      <div style="max-width:1280px; margin:0 auto;">
+        <button onclick="{{ onCloseArchive }}" style="background:none; border:none; padding:0; margin-bottom:40px; color:#f3ead9; font-size:13px; letter-spacing:0.08em; text-transform:uppercase; cursor:pointer; opacity:0.65; display:flex; align-items:center; gap:8px; transition:opacity 0.25s ease, transform 0.25s ease;" style-hover="opacity:1; transform:translateX(-4px);">{{ T.back }}</button>
+        <div style="font-size:13px; letter-spacing:0.2em; text-transform:uppercase; color:#e0a45c; margin-bottom:20px; animation:fadeUp 0.7s ease both;">{{ T.printsEyebrow }}</div>
+        <h2 style="font-family:var(--font-body); font-weight:500; font-size:clamp(34px,4.2vw,52px); margin:0 0 24px 0; max-width:760px; animation:fadeUp 0.7s ease both; animation-delay:0.1s;">{{ T.printsHeading }}</h2>
+        <p style="font-size:17px; line-height:1.85; font-weight:300; opacity:0.82; max-width:680px; margin:0 0 72px 0; animation:fadeUp 0.7s ease both; animation-delay:0.2s;">{{ T.printsIntro }}</p>
+
+        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(300px,1fr)); gap:28px; margin-bottom:88px;">
+          <sc-for list="{{ printOptions }}" as="p" hint-placeholder-count="3">
+            <div style="{{ p.cardStyle }} background:linear-gradient(160deg, rgba(224,164,92,0.14), rgba(243,234,217,0.05)); backdrop-filter:blur(2px); padding:32px; border:1px solid rgba(224,164,92,0.35); border-radius:6px; box-shadow:0 14px 34px rgba(0,0,0,0.28); transition:transform 0.4s cubic-bezier(0.22,1,0.36,1), box-shadow 0.4s ease, border-color 0.4s ease;" style-hover="transform:translateY(-10px) scale(1.02); box-shadow:0 22px 46px rgba(0,0,0,0.4); border-color:rgba(224,164,92,0.75);">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#e0a45c" stroke-width="1.5" style="width:34px; height:34px; margin-bottom:16px; transition:transform 0.45s cubic-bezier(0.34,1.56,0.64,1); animation:iconFloat 3.2s ease-in-out infinite;" style-hover="transform:scale(1.18) rotate(-6deg);">
+                <sc-for list="{{ p.iconPaths }}" as="d" hint-placeholder-count="2">
+                  <path d="{{ d }}"></path>
+                </sc-for>
+              </svg>
+              <h3 style="font-family:var(--font-body); font-weight:500; font-style:italic; font-size:24px; margin:0 0 12px 0; color:#e0a45c;">{{ p.name }}</h3>
+              <p style="font-size:14px; line-height:1.7; opacity:0.8; margin:0; font-weight:300;">{{ p.desc }}</p>
+              <sc-if value="{{ p.mockup }}" hint-placeholder-val="{{ false }}">
+                <img src="{{ p.mockup }}" alt="{{ p.name }}" style="width:100%; aspect-ratio:1/1; object-fit:cover; border-radius:4px; margin-top:18px; box-shadow:0 6px 16px rgba(0,0,0,0.25); display:block;"/>
+              </sc-if>
+            </div>
+          </sc-for>
+        </div>
+
+        <h3 style="font-family:var(--font-body); font-weight:500; font-style:italic; font-size:26px; margin:0 0 28px 0; color:#e0a45c;">{{ T.sizeGuideHeading }}</h3>
+        <div style="display:grid; grid-template-columns:repeat(6, 1fr); gap:14px; margin-bottom:88px;">
+          <sc-for list="{{ sizeGuides }}" as="sg" hint-placeholder-count="6">
+            <div style="{{ sg.cardStyle }} background:#f3ead9; padding:10px; border-radius:2px; box-shadow:0 10px 30px rgba(0,0,0,0.25); cursor:pointer; transition:transform 0.4s ease, box-shadow 0.4s ease;" style-hover="transform:translateY(-6px) scale(1.03); box-shadow:0 20px 44px rgba(0,0,0,0.4);" onclick="{{ sg.onOpen }}" ease;" style-hover="transform:translateY(-6px) scale(1.02); box-shadow:0 16px 40px rgba(0,0,0,0.35);" onclick="{{ sg.onOpen }}">
+              <img src="{{ sg.src }}" alt="{{ sg.alt }}" style="width:100%; aspect-ratio:1/1; object-fit:contain; display:block;"/>
+            </div>
+          </sc-for>
+        </div>
+
+        <h3 style="font-family:var(--font-body); font-weight:500; font-style:italic; font-size:26px; margin:0 0 28px 0; color:#e0a45c;">{{ T.giftingHeading }}</h3>
+        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px,1fr)); gap:24px; margin-bottom:88px;">
+          <sc-for list="{{ giftServices }}" as="g" hint-placeholder-count="3">
+            <div style="{{ g.cardStyle }} padding:24px; border-top:1px solid rgba(224,164,92,0.25); transition:transform 0.35s ease, background 0.35s ease; border-radius:2px;" style-hover="transform:translateY(-5px); background:rgba(224,164,92,0.06);">
+              <div style="font-size:16px; font-weight:500; margin-bottom:8px; color:#f3ead9;">{{ g.name }}</div>
+              <div style="font-size:14px; opacity:0.7; font-weight:300; line-height:1.6;">{{ g.desc }}</div>
+            </div>
+          </sc-for>
+        </div>
+
+        <h3 style="font-family:var(--font-body); font-weight:500; font-style:italic; font-size:26px; margin:0 0 12px 0; color:#e0a45c;">{{ T.servicesHeading }}</h3>
+        <p style="font-size:14px; opacity:0.6; margin:0 0 32px 0; max-width:640px;">{{ T.servicesIntro }}</p>
+        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(340px,1fr)); gap:28px; align-items:start;">
+          <sc-for list="{{ professionalServices }}" as="s" hint-placeholder-count="6">
+            <div style="position:relative; height:{{ s.slotHeight }}; margin-bottom:24px;">
+            <div style="{{ s.cardStyle }} position:absolute; top:0; left:0; right:0; z-index:{{ s.zIndex }}; padding:32px 28px; background-color:rgba(224,164,92,{{ s.bgAlpha }}); background-image:linear-gradient(160deg, rgba(224,164,92,0.16), rgba(224,164,92,0.03)); background-size:100% 100%; background-position:0 0; border:1px solid rgba(224,164,92,0.3); border-radius:6px; box-shadow:0 14px 34px rgba(0,0,0,0.28); overflow:hidden; cursor:pointer; transition:transform 0.45s cubic-bezier(0.22,1,0.36,1), box-shadow 0.45s ease, border-color 0.45s ease, background-color 0.5s ease;" style-hover="transform:translateY(-8px) rotate(-0.4deg) scale(1.015); box-shadow:0 26px 50px rgba(0,0,0,0.45); border-color:rgba(224,164,92,0.75); background-image:linear-gradient(160deg, rgba(224,164,92,0.16), rgba(224,164,92,0.03)), linear-gradient(135deg, transparent 35%, rgba(224,164,92,0.5) 50%, transparent 65%); background-size:100% 100%, 260% 260%; background-position:0 0, 0% 0%; animation:cornerSweep 1.8s linear infinite;" onclick="{{ s.onToggle }}">
+              <div style="position:absolute; top:-30px; right:-20px; width:110px; height:110px; border-radius:50%; background:radial-gradient(circle, rgba(224,164,92,0.22), transparent 70%); transition:transform 0.6s ease;" style-hover="transform:scale(1.15) rotate(12deg);"></div>
+              <div style="width:38px; height:3px; background:#e0a45c; margin-bottom:18px; transition:width 0.4s ease;" style-hover="width:56px;"></div>
+              <div style="font-family:var(--font-body); font-style:italic; font-size:22px; font-weight:500; margin-bottom:14px; color:#f3ead9; transition:transform 0.35s ease;" style-hover="transform:translateX(3deg);">{{ s.name }}</div>
+              <div style="max-height:{{ s.maxHeight }}; overflow:hidden; transition:max-height 0.55s cubic-bezier(0.22,1,0.36,1); {{ s.bodyStyle }}">
+                <sc-for list="{{ s.paragraphs }}" as="para" hint-placeholder-count="2">
+                  <p style="font-size:14px; opacity:0.75; font-weight:300; line-height:1.75; margin:0 0 14px 0;">{{ para }}</p>
+                </sc-for>
+                <a href="{{ s.example.href }}" style="font-size:13px; color:#e0a45c; text-decoration:none; border-bottom:1px solid rgba(224,164,92,0.4); transition:border-color 0.25s ease;" style-hover="border-color:#e0a45c;">{{ s.example.label }} &rarr;</a>
+              </div>
+              <div style="font-size:12px; opacity:0.5; margin-top:12px; letter-spacing:0.06em; text-transform:uppercase;">{{ s.toggleLabel }}<span style="{{ s.arrowStyle }}">&darr;</span></div>
+            </div>
+            </div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SIZE GUIDE LIGHTBOX -->
+  <div style="position:fixed; inset:0; z-index:110; background:rgba(15,12,9,0.92); align-items:center; justify-content:center; padding:40px; display:{{ sizeGuideModalDisplay }};" onclick="{{ onCloseSizeGuide }}">
+    <div style="position:relative; max-width:720px; max-height:90vh; width:100%; background:#f3ead9; padding:24px; border-radius:4px;" onclick="{{ stopProp }}">
+      <img src="{{ selectedSizeGuide.src }}" alt="{{ selectedSizeGuide.alt }}" style="width:100%; aspect-ratio:1/1; object-fit:contain; display:block;"/>
+      <button onclick="{{ onCloseSizeGuide }}" style="position:absolute; top:-44px; right:0; width:36px; height:36px; border-radius:50%; background:rgba(242,237,226,0.15); border:none; color:#f2ede2; font-size:20px; cursor:pointer; line-height:1;" style-hover="background:rgba(242,237,226,0.3);">&times;</button>
+    </div>
+  </div>
+
+  <!-- CLIPPING LIGHTBOX -->
+  <div style="position:fixed; inset:0; z-index:110; background:rgba(15,12,9,0.92); align-items:center; justify-content:center; padding:40px; display:{{ clippingModalDisplay }};" onclick="{{ onCloseClipping }}">
+    <div style="position:relative; max-width:1100px; max-height:90vh; width:100%;" onclick="{{ stopProp }}">
+      <img src="{{ selectedClipping.src }}" alt="{{ selectedClipping.caption }}" style="width:100%; height:90vh; object-fit:contain; display:block;"/>
+      <button onclick="{{ onCloseClipping }}" style="position:absolute; top:-44px; right:0; width:36px; height:36px; border-radius:50%; background:rgba(242,237,226,0.15); border:none; color:#f2ede2; font-size:20px; cursor:pointer; line-height:1;" style-hover="background:rgba(242,237,226,0.3);">&times;</button>
+      <div style="color:#f2ede2; opacity:0.7; font-size:13px; text-align:center; margin-top:16px;">{{ selectedClipping.caption }}</div>
+    </div>
+  </div>
+
+  <!-- ACQUISITION MODAL -->
+    <div style="position:fixed; inset:0; z-index:100; background:rgba(20,17,12,0.85); align-items:center; justify-content:center; padding:24px; display:{{ modalDisplay }};" onclick="{{ closeWork }}">
+      <div style="background:#f2ede2; color:#231f19; max-width:720px; width:100%; max-height:92vh; overflow-y:auto; animation:modalIn 0.35s ease both;" onclick="{{ stopProp }}">
+        <div style="position:relative; width:100%; aspect-ratio:1/1; background:#2c261d;">
+          <sc-if value="{{ selectedWork.hasPhoto }}" hint-placeholder-val="{{ false }}">
+            <img src="{{ selectedWork.image }}" alt="{{ selectedWork.title }}" style="width:100%; height:100%; object-fit:contain; display:block;"/>
+          </sc-if>
+          <sc-if value="{{ selectedWork.hasPhotoInverse }}" hint-placeholder-val="{{ false }}">
+            <div style="position:absolute; inset:0; display:flex; align-items:center; justify-content:center; font-family:monospace; font-size:12px; letter-spacing:0.08em; text-transform:uppercase; color:rgba(242,237,226,0.5); text-align:center; padding:16px;">{{ selectedWork.medium }} {{ T.photoNeeded }}</div>
+          </sc-if>
+          <button onclick="{{ closeWork }}" style="position:absolute; top:16px; right:16px; width:36px; height:36px; border-radius:50%; background:rgba(20,17,12,0.6); border:none; color:#f2ede2; font-size:20px; cursor:pointer; line-height:1;" style-hover="background:rgba(20,17,12,0.85);">&times;</button>
+        </div>
+        <div style="padding:40px;">
+        <div style="margin-bottom:24px;">
+          <div style="font-family:var(--font-body); font-style:italic; font-size:28px;">{{ selectedWork.title }}</div>
+          <div style="font-size:13px; opacity:0.6; margin-top:4px;">{{ selectedWork.meta }}</div>
+        </div>
+
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; padding:20px 0; border-top:1px solid rgba(35,31,25,0.15); border-bottom:1px solid rgba(35,31,25,0.15); margin-bottom:28px;">
+          <div>
+            <div style="font-size:12px; letter-spacing:0.1em; text-transform:uppercase; opacity:0.5; margin-bottom:6px;">{{ T.modalDimensions }}</div>
+            <div style="font-size:15px;">{{ selectedWork.dimensions }}</div>
+          </div>
+          <div>
+            <div style="font-size:12px; letter-spacing:0.1em; text-transform:uppercase; opacity:0.5; margin-bottom:6px;">{{ T.modalPrice }}</div>
+            <div style="font-size:15px;">{{ selectedWork.priceLabel }}</div>
+          </div>
+        </div>
+
+        <div style="font-size:13px; letter-spacing:0.15em; text-transform:uppercase; opacity:0.6; margin-bottom:16px;">{{ T.modalAcquire }}</div>
+
+        <a href="{{ selectedWork.paypalLink }}" target="_blank" rel="noopener" style="display:flex; align-items:center; justify-content:center; gap:10px; width:100%; padding:16px; background:#231f19; color:#f2ede2; text-decoration:none; font-size:14px; letter-spacing:0.06em; margin-bottom:12px; transition:background 0.2s ease;" style-hover="background:#3a332a;">{{ T.modalPaypal }}</a>
+
+        <button onclick="{{ toggleBank }}" style="width:100%; padding:16px; background:transparent; border:1px solid rgba(35,31,25,0.3); color:#231f19; font-size:14px; letter-spacing:0.06em; cursor:pointer; font-family:var(--font-body); transition:border-color 0.2s ease;" style-hover="border-color:#231f19;">{{ bankButtonLabel }}</button>
+
+        <sc-if value="{{ showBank }}" hint-placeholder-val="{{ false }}">
+          <div style="margin-top:20px; padding:20px; background:rgba(35,31,25,0.05); font-size:14px; line-height:2;">
+            <div><span style="opacity:0.55;">{{ T.bankAccountName }}</span> {{ bankDetails.accountName }}</div>
+            <div><span style="opacity:0.55;">{{ T.bankName }}</span> {{ bankDetails.bankName }}</div>
+            <div><span style="opacity:0.55;">{{ T.bankIban }}</span> {{ bankDetails.iban }}</div>
+            <div><span style="opacity:0.55;">{{ T.bankSwift }}</span> {{ bankDetails.swift }}</div>
+            <div style="margin-top:12px; font-size:12px; opacity:0.5; line-height:1.6;">{{ T.bankNote }}</div>
+          </div>
+        </sc-if>
+
+        <p style="margin:24px 0 0 0; font-size:12px; opacity:0.45; line-height:1.6;">{{ T.modalDisclaimer }}</p>
+        </div>
+      </div>
+    </div>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { medium: 'All', selectedWork: null, showBank: false, showAllExhibitions: false, page: 'home', selectedClipping: null, selectedSizeGuide: null, expandedService: null, lang: 'en', darkMode: false, inquiryName: '', inquiryEmail: '', inquiryMessage: '', inquirySent: false };
+
+  updateInquiry(field, value) {
+    this.setState({ [field]: value });
+  }
+
+  submitInquiry() {
+    const { inquiryName, inquiryEmail, inquiryMessage } = this.state;
+    const subject = encodeURIComponent(`Inquiry from ${inquiryName || 'website visitor'}`);
+    const body = encodeURIComponent(`${inquiryMessage}\n\n— ${inquiryName} (${inquiryEmail})`);
+    window.open(`mailto:${this.contactEmail}?subject=${subject}&body=${body}`, '_blank');
+    this.setState({ inquirySent: true });
+  }
+
+  toggleService(name) {
+    this.setState((s) => ({ expandedService: s.expandedService === name ? null : name }));
+  }
+
+  toggleLang() {
+    this.setState((s) => ({ lang: s.lang === 'en' ? 'ar' : 'en' }));
+  }
+
+  toggleDark() {
+    this.setState((s) => ({ darkMode: !s.darkMode }));
+  }
+
+  i18n = {
+    en: {
+      navWorks: 'Works', navBio: 'Biography', navArchive: 'Archive', navMedia: 'Media & Publications', navPrints: 'Prints & Services', navContact: 'Contact',
+      heroName1: 'Dr. Shangal', heroName2: 'Hassan',
+      heroEyebrow: 'Painter · Sculptor · Professor of Fine Arts',
+      heroBody: 'Former Dean and Head of Sculpture, College of Fine and Applied Art — former Chairman of the Sudanese Plastic Artists General Union — founder of the Blue Nile Friends of Sudanese and Ethiopian Artists.',
+      heroViewWork: 'View the Work', heroBiography: 'Biography',
+      statementEyebrow: 'Artist Statement',
+      statementQuote: '"My recent series of paintings is a meticulous exploration of spatial dimensions — an ongoing project I call Human Spaces, examining the complexities of war and its impact on human environments."',
+      statementP1: 'Much of my recent work involves experimentation, particularly in the reconfiguration of abstract forms. I aim to reinterpret the concept of space from a fresh perspective, reshaping familiar elements through a synthesis of theories and a dynamic interplay of colour.',
+      statementP2: 'This journey has been a long-standing exploration of what I call human space — a realm liberated from rigid boundaries, where time flows freely and meaning is continuously redefined.',
+      worksEyebrow: 'Selected Works', worksHeading: 'Four decades of form.',
+      worksFooter: "Additional works, exact dimensions and prices can be added as they're supplied — each card is ready to carry real photography, size and availability.",
+      photoNeeded: 'photo needed', priceOnRequest: 'Price on request', dimensionsOnRequest: 'Dimensions on request',
+      bioEyebrow: 'Biography', bioHeading: 'From Eldammar to the Faculty of Fine Arts.',
+      bioP1: 'Abdelrahman Abdallah, known as Shangal Hassan, is a versatile artist, designer, sculptor and professor at the College of Fine and Applied Art (sculpture department), Sudan University of Science and Technology. His journey began in Eldammar, Sudan, in 1960, culminating in graduation from the Faculty of Art in 1985.',
+      bioP2: "He has exhibited across Sudan, Ethiopia, England and Russia, and won first prize for his design proposal for the Human Rights Memorial Monument, sited before the Africa Union Building. His practice is devoted to rekindling Sudan's ancient civilisations, with particular emphasis on Meroitic sculpture.",
+      bioP3: 'A significant portion of his career has fostered cultural and artistic ties between Sudan and Ethiopia. His work lives in official and private collections beyond Sudan\'s borders, and he now collaborates with the Shibir Nilotic Gallery of Modern African Art (Berlin) as Head of Academic Art.',
+      bioStat1: 'Graduated, Faculty of Art', bioStat2: 'Faculty of Fine & Applied Arts, SUST', bioStat3: 'Countries exhibited in',
+      exTeaserEyebrow: 'Exhibitions & Awards', exTeaserHeading: 'Four decades on the international stage.', exTeaserBtn: 'View Full Archive →',
+      recogEyebrow: 'Recognition', recogHeading: 'Representing Sudan on the continental stage.',
+      recogP1: 'Dr. Hassan at the African Union headquarters in Addis Ababa for the Kwibuka 30 commemoration of the 1994 genocide against the Tutsi in Rwanda — continuing his long engagement with the AU, whose Human Rights Memorial Monument he won first prize designing.',
+      contactHeading: 'Inquiries on works,commissions & collaborations.', contactStudio: 'Studio', contactStudioVal: 'Khartoum, Sudan',
+      contactAffiliation: 'Affiliation', contactAffiliationVal: 'Shibir Nilotic Gallery of Modern African Art, Berlin',
+      contactCopyright: '© Shangal Hassan. All works protected by copyright.', contactTagline: 'Human Space, continued.',
+      formName: 'Name', formEmail: 'Email', formMessage: 'Message', formSend: 'Send Inquiry',
+      formSent: "Thanks — your email client should now be open with your message ready to send.",
+      formNamePh: 'Your name', formEmailPh: 'your@email.com', formMessagePh: 'Tell us about your inquiry — a commission, a work you\'re interested in, or a service.',
+      back: '← Back to site',
+      archiveEyebrow: 'The Archive', archiveHeading: 'Exhibitions, awards, commissions & collections.',
+      exHeading: 'Exhibitions & Awards', showFewer: 'Show fewer', showAll: (n) => `Show all ${n} exhibitions & awards`,
+      workshopsHeading: 'Workshops & Distinctions', publicArtHeading: 'Public Art Commissions', collectionsHeading: 'Collections',
+      mediaEyebrow: 'Media & Publications', mediaHeading: 'Four decades of press coverage.',
+      printsEyebrow: 'Prints & Services', printsHeading: 'Bring the work home, or gift it.',
+      printsIntro: 'Every piece is available as a fine-art reproduction alongside the original. Choose your format and size below, then reach out to arrange printing, framing and shipping.',
+      sizeGuideHeading: 'Size Guide', giftingHeading: 'Gifting & Printing',
+      servicesHeading: 'Professional Services', servicesIntro: 'Beyond prints and originals — consulting, curation and project delivery drawn from decades of practice.',
+      readMore: 'Read more', showLess: 'Show less',
+      modalDimensions: 'Dimensions', modalPrice: 'Price', modalAcquire: 'Acquire this work',
+      modalPaypal: 'Pay with PayPal →', modalBankShow: 'Bank Transfer Details', modalBankHide: 'Hide bank transfer details',
+      bankAccountName: 'Account Name:', bankName: 'Bank:', bankIban: 'IBAN / Account No:', bankSwift: 'SWIFT/BIC:',
+      bankNote: "Please include the work's title as payment reference, then email confirmation to shangalart@gmail.com.",
+      modalDisclaimer: 'Prices are indicative and confirmed upon inquiry. All acquisitions are subject to availability and a signed certificate of authenticity accompanies each work.',
+      langBtn: 'العربية', darkBtn: 'Dark', lightBtn: 'Light',
+    },
+    ar: {
+      navWorks: 'الأعمال', navBio: 'السيرة الذاتية', navArchive: 'الأرشيف', navMedia: 'الإعلام والمنشورات', navPrints: 'المطبوعات والخدمات', navContact: 'تواصل',
+      heroName1: 'د. شنقل', heroName2: 'حسن',
+      heroEyebrow: 'رسّام · نحّات · أستاذ الفنون الجميلة',
+      heroBody: 'عميد وأستاذ سابق لقسم النحت بكلية الفنون الجميلة والتطبيقية — رئيس سابق للاتحاد العام للفنانين التشكيليين السودانيين — مؤسس رابطة أصدقاء النيل الأزرق للفنانين السودانيين والإثيوبيين.',
+      heroViewWork: 'استعرض الأعمال', heroBiography: 'السيرة الذاتية',
+      statementEyebrow: 'بيان الفنان',
+      statementQuote: '«سلسلتي الأخيرة من اللوحات هي استكشاف دقيق للأبعاد المكانية — مشروع مستمر أسميه الفضاءات الإنسانية، يتناول تعقيدات الحرب وأثرها على البيئات الإنسانية.»',
+      statementP1: 'يتضمن الكثير من عملي الأخير تجريبًا، لا سيما في إعادة تشكيل الأشكال التجريدية. أسعى إلى إعادة تفسير مفهوم الفضاء من منظور جديد، وإعادة تشكيل عناصر مألوفة عبر توليف النظريات وتفاعل ديناميكي للألوان.',
+      statementP2: 'كانت هذه الرحلة استكشافًا طويل الأمد لما أسميه الفضاء الإنساني — عالم متحرر من الحدود الصارمة، حيث يتدفق الزمن بحرية وتتجدد المعاني باستمرار.',
+      worksEyebrow: 'أعمال مختارة', worksHeading: 'أربعة عقود من الشكل.',
+      worksFooter: 'يمكن إضافة أعمال أخرى وأبعاد وأسعار دقيقة عند توفرها — كل بطاقة جاهزة لاستقبال صور حقيقية وقياسات وتوفر.',
+      photoNeeded: 'الصورة مطلوبة', priceOnRequest: 'السعر عند الطلب', dimensionsOnRequest: 'الأبعاد عند الطلب',
+      bioEyebrow: 'السيرة الذاتية', bioHeading: 'من الدامر إلى كلية الفنون الجميلة.',
+      bioP1: 'عبد الرحمن عبد الله، المعروف باسم شنقل حسن، فنان ومصمم ونحّات متعدد المواهب وأستاذ بكلية الفنون الجميلة والتطبيقية (قسم النحت)، جامعة السودان للعلوم والتكنولوجيا. بدأت رحلته في الدامر بالسودان عام 1960، وتُوّجت بتخرجه من كلية الفنون عام 1985.',
+      bioP2: 'أقام معارض في السودان وإثيوبيا وإنجلترا وروسيا، وفاز بالجائزة الأولى عن تصميمه المقترح لنصب ذكرى حقوق الإنسان أمام مبنى الاتحاد الأفريقي. يكرّس ممارسته لإحياء حضارات السودان القديمة، مع تركيز خاص على النحت المروي.',
+      bioP3: 'كرّس جزء كبير من مسيرته لتعزيز الروابط الثقافية والفنية بين السودان وإثيوبيا. تعيش أعماله في مقتنيات رسمية وخاصة خارج حدود السودان، ويتعاون حاليًا مع صالة شبير النيلية للفن الأفريقي الحديث (برلين) كرئيس للفن الأكاديمي.',
+      bioStat1: 'تخرج من كلية الفنون', bioStat2: 'كلية الفنون الجميلة والتطبيقية، جامعة السودان', bioStat3: 'دول أقام فيها معارض',
+      exTeaserEyebrow: 'المعارض والجوائز', exTeaserHeading: 'أربعة عقود على الساحة الدولية.', exTeaserBtn: 'عرض الأرشيف الكامل ←',
+      recogEyebrow: 'التقدير', recogHeading: 'تمثيل السودان على الساحة القارية.',
+      recogP1: 'الدكتور حسن في مقر الاتحاد الأفريقي بأديس أبابا لإحياء ذكرى «كويبوكا 30» للإبادة الجماعية ضد التوتسي في رواندا عام 1994 — استمرارًا لارتباطه الطويل بالاتحاد الأفريقي، الذي فاز بالجائزة الأولى في تصميم نصب ذكرى حقوق الإنسان الخاص به.',
+      contactHeading: 'استفسارات حول الأعمال، والتكليفات والتعاون.', contactStudio: 'المرسم', contactStudioVal: 'الخرطوم، السودان',
+      contactAffiliation: 'الانتساب', contactAffiliationVal: 'صالة شبير النيلية للفن الأفريقي الحديث، برلين',
+      contactCopyright: '© شنقل حسن. جميع الأعمال محمية بحقوق النشر.', contactTagline: 'الفضاء الإنساني، مستمر.',
+      formName: 'الاسم', formEmail: 'البريد الإلكتروني', formMessage: 'الرسالة', formSend: 'إرسال الاستفسار',
+      formSent: 'شكرًا — يجب أن يكون برنامج البريد الإلكتروني لديك مفتوحًا الآن مع رسالتك جاهزة للإرسال.',
+      formNamePh: 'اسمك', formEmailPh: 'بريدك@الإلكتروني.com', formMessagePh: 'أخبرنا عن استفسارك — تكليف، عمل تهتم به، أو خدمة.',
+      back: '→ العودة إلى الموقع',
+      archiveEyebrow: 'الأرشيف', archiveHeading: 'المعارض والجوائز والتكليفات والمقتنيات.',
+      exHeading: 'المعارض والجوائز', showFewer: 'عرض أقل', showAll: (n) => `عرض جميع ${n} من المعارض والجوائز`,
+      workshopsHeading: 'ورش العمل والتكريمات', publicArtHeading: 'أعمال فنية عامة', collectionsHeading: 'المقتنيات',
+      mediaEyebrow: 'الإعلام والمنشورات', mediaHeading: 'أربعة عقود من التغطية الصحفية.',
+      printsEyebrow: 'المطبوعات والخدمات', printsHeading: 'اقتنِ العمل لمنزلك أو أهده.',
+      printsIntro: 'كل عمل متاح كطباعة فنية فاخرة إلى جانب العمل الأصلي. اختر الشكل والحجم أدناه، ثم تواصل معنا لترتيب الطباعة والتأطير والشحن.',
+      sizeGuideHeading: 'دليل المقاسات', giftingHeading: 'الإهداء والطباعة',
+      servicesHeading: 'الخدمات المهنية', servicesIntro: 'أبعد من المطبوعات والأعمال الأصلية — استشارات وتنظيم معارض وتنفيذ مشاريع مستمدة من عقود من الممارسة.',
+      readMore: 'اقرأ المزيد', showLess: 'عرض أقل',
+      modalDimensions: 'الأبعاد', modalPrice: 'السعر', modalAcquire: 'اقتنِ هذا العمل',
+      modalPaypal: '← الدفع عبر باي بال', modalBankShow: 'تفاصيل التحويل البنكي', modalBankHide: 'إخفاء تفاصيل التحويل البنكي',
+      bankAccountName: 'اسم الحساب:', bankName: 'البنك:', bankIban: 'رقم الآيبان / الحساب:', bankSwift: 'رمز السويفت:',
+      bankNote: 'يرجى كتابة عنوان العمل كمرجع للدفع، ثم إرسال تأكيد الدفع عبر البريد الإلكتروني إلى shangalart@gmail.com.',
+      modalDisclaimer: 'الأسعار استرشادية ويتم تأكيدها عند الاستفسار. تخضع جميع عمليات الاقتناء للتوفر، ويُرفق بكل عمل شهادة أصالة موقّعة.',
+      langBtn: 'English', darkBtn: 'داكن', lightBtn: 'فاتح',
+    },
+  };
+
+  mediumNamesAr = { Painting: 'رسم', Sculpture: 'نحت', Drawing: 'تخطيط', Relief: 'بارز' };
+
+  detailTermsAr = [
+    [/Solo Exhibition/g, 'معرض فردي'], [/Group Exhibition/g, 'معرض جماعي'], [/Certificate/g, 'شهادة'],
+    [/Workshop/g, 'ورشة عمل'], [/Exhibition/g, 'معرض'], [/First Prize/g, 'الجائزة الأولى'],
+  ];
+
+  translateDetail(text, isAr) {
+    if (!isAr || !text) return text;
+    let out = text;
+    this.detailTermsAr.forEach(([re, ar]) => { out = out.replace(re, ar); });
+    return out;
+  }
+
+  navItems = [
+    { label: 'Works', href: '#works' },
+    { label: 'Biography', href: '#biography' },
+    { label: 'Archive', href: '#exhibitions', archive: true },
+    { label: 'Media & Publications', href: '#media', media: true },
+    { label: 'Prints & Services', href: '#prints', prints: true },
+    { label: 'Contact', href: '#contact' },
+  ];
+
+  printOptions = [
+    { name: 'Canvas Print', nameAr: 'طباعة على قماش', desc: 'Gallery-quality canvas, available square or portrait/landscape. Wrapped or framed, from small desk pieces to giant statement walls.', descAr: 'قماش بجودة معرضية، متوفر بشكل مربع أو عمودي/أفقي. ملفوف أو مؤطر، من قطع مكتبية صغيرة إلى جداريات كبيرة.', icon: 'canvas', mockup: 'uploads/mockup-canvasprint.png' },
+    { name: 'Archival Print', nameAr: 'طباعة أرشيفية', desc: 'Museum-grade archival paper, true-to-original colour. Available framed or with a mount, square or portrait/landscape.', descAr: 'ورق أرشيفي بجودة متحفية، بألوان مطابقة للأصل. متوفر مؤطرًا أو بحامل، مربع أو عمودي/أفقي.', icon: 'frame', mockup: 'uploads/mockup-archivalprint.png' },
+    { name: 'Art Print', nameAr: 'طباعة فنية', desc: 'An accessible, lightweight option for smaller spaces and gifting — mini to large, framed or unframed.', descAr: 'خيار ميسور وخفيف للمساحات الصغيرة والإهداء — من الحجم المصغر إلى الكبير، مؤطر أو بدون إطار.', icon: 'print', mockup: 'uploads/mockup-artprint.png' },
+    { name: 'Greeting Cards', nameAr: 'بطاقات معايدة', desc: 'Artwork reproduced on printed cards, ready to send or frame — a small, affordable way to share a piece.', descAr: 'أعمال فنية مطبوعة على بطاقات جاهزة للإرسال أو التأطير — طريقة صغيرة وميسورة لمشاركة عمل فني.', icon: 'card', mockup: 'uploads/mockup-card.png' },
+    { name: 'T-Shirts', nameAr: 'تيشيرتات', desc: 'Wearable prints of selected artworks, available in a range of sizes.', descAr: 'طبعات يمكن ارتداؤها لأعمال فنية مختارة، متوفرة بمجموعة من المقاسات.', icon: 'shirt', mockup: 'uploads/mockup-shirt.png' },
+    { name: 'Mugs', nameAr: 'أكواب', desc: 'Artwork printed on ceramic mugs — a everyday piece for the studio, office or kitchen.', descAr: 'أعمال فنية مطبوعة على أكواب سيراميك — قطعة يومية للمرسم أو المكتب أو المطبخ.', icon: 'mug', mockup: 'uploads/mockup-mug.png' },
+    { name: 'Caps', nameAr: 'قبعات', desc: 'Embroidered or printed caps featuring a signature motif or detail from the artist\'s work.', descAr: 'قبعات مطرزة أو مطبوعة تحمل زخرفة أو تفصيلاً مميزًا من عمل الفنان.', icon: 'cap', mockup: 'uploads/mockup-cap.png' },
+    { name: 'Tote Bags', nameAr: 'حقائب قماشية', desc: 'Canvas tote bags printed with artwork, sized for daily use.', descAr: 'حقائب قماشية مطبوعة بأعمال فنية، بحجم مناسب للاستخدام اليومي.', icon: 'bag', mockup: 'uploads/mockup-tote.png' },
+    { name: 'Canvas Print Samples', nameAr: 'عينات طباعة قماشية', desc: 'Small sample swatches of the canvas print finish and colour reproduction, available on request before ordering a full-size piece.', descAr: 'عينات صغيرة من خامة الطباعة القماشية ودقة الألوان، متوفرة عند الطلب قبل شراء قطعة كاملة الحجم.', icon: 'swatch', mockup: 'uploads/mockup-swatch.png' },
+  ];
+
+  printIcons = {
+    canvas: 'M4 4h16v16H4z||M4 15l4-4 3 3 5-5 4 4',
+    frame: 'M3 3h18v18H3z||M7 7h10v10H7z',
+    print: 'M6 2h12v7H6z||M6 9H4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h2M18 9h2a1 1 0 0 1 1 1v6a1 1 0 0 1-1 1h-2||M6 14h12v7H6z',
+    card: 'M3 5h18v14H3z||M3 9h18M7 14h4',
+    shirt: 'M8 4L4 7l2 3 2-1v11h8V9l2 1 2-3-4-3-2 2h-4L8 4z',
+    mug: 'M5 4h11v9a4 4 0 0 1-4 4H9a4 4 0 0 1-4-4V4z||M16 7h2a2 2 0 0 1 0 4h-2',
+    cap: 'M3 13c0-4 4-8 9-8s9 4 9 8||M12 5v3M21 13c-1 2-3 3-5 3H8c-2 0-4-1-5-3',
+    bag: 'M6 8h12l-1 12H7L6 8z||M9 8V6a3 3 0 0 1 6 0v2',
+    swatch: 'M3 3h7v7H3z||M14 3h7v7h-7z||M3 14h7v7H3z||M14 14h7v7h-7z',
+  };
+
+  giftServices = [
+    { name: 'Gift Wrapping & Presentation', nameAr: 'تغليف وتقديم الهدايا', desc: 'Prints and originals prepared for gifting on request, with a signed note from the artist.', descAr: 'يتم تجهيز المطبوعات والأعمال الأصلية للإهداء عند الطلب، مع بطاقة موقعة من الفنان.' },
+    { name: 'Custom Sizing', nameAr: 'مقاسات مخصصة', desc: 'Any piece can be scaled to fit a specific wall or frame — send your dimensions for a quote.', descAr: 'يمكن تعديل حجم أي عمل ليناسب جدارًا أو إطارًا محددًا — أرسل قياساتك للحصول على عرض سعر.' },
+    { name: 'Worldwide Shipping', nameAr: 'شحن عالمي', desc: 'Rolled or crated shipping arranged for international collectors and gift recipients.', descAr: 'يُرتَّب الشحن ملفوفًا أو في صناديق للمقتنين الدوليين ومستلمي الهدايا.' },
+  ];
+
+  sizeGuides = [
+    { src: 'uploads/FINAL-SIZES-Art-Options-Guide-Canvas-Square-1300-x-1300_1024x1024.webp', alt: 'Canvas print size guide, square' },
+    { src: 'uploads/art-options-guide-sizes-canvas-portrait-1300-x-1300_1024x1024.webp', alt: 'Canvas print size guide, portrait' },
+    { src: 'uploads/art-options-guide-sizes-archival-square-1300-x-1300_1024x1024.webp', alt: 'Archival print size guide, square' },
+    { src: 'uploads/art-options-guide-sizes-archival-portrait-1300-x-1300_1024x1024.webp', alt: 'Archival print size guide, portrait' },
+    { src: 'uploads/art-options-guide-sizes-art-print-square-1300-x-1300_1024x1024.webp', alt: 'Art print size guide, square' },
+    { src: 'uploads/art-options-guide-sizes-art-print-portrait-1300-x-1300_1024x1024.webp', alt: 'Art print size guide, portrait' },
+  ];
+
+  professionalServices = [
+    { name: 'Consulting',
+      nameAr: 'الاستشارات',
+      paragraphs: [
+        'Advice on building, refining or displaying a collection — from a single statement piece to a full curated wall. Sessions draw on decades spent both making and teaching sculpture and painting, so the guidance covers not just taste but material, scale and longevity.',
+        'Consulting also extends to institutions and private commissions: matching an artist\'s practice to a brief, a site, or an audience, and advising on how a body of work should be sequenced or presented.',
+      ],
+      paragraphsAr: [
+        'استشارات حول بناء أو تنقيح أو عرض مجموعة فنية — من قطعة واحدة مميزة إلى جدار منسق بالكامل. تستند الجلسات إلى عقود قضاها الفنان في صنع وتدريس النحت والرسم، لذا تغطي الاستشارة ليس الذوق فحسب بل الخامة والحجم والاستدامة أيضًا.',
+        'تمتد الاستشارات أيضًا إلى المؤسسات والتكليفات الخاصة: مطابقة ممارسة الفنان مع بريف أو موقع أو جمهور، وتقديم المشورة حول كيفية تسلسل أو عرض مجموعة الأعمال.',
+      ],
+      example: { label: 'See the exhibition record this advice draws on', href: '#exhibitions' },
+      exampleAr: { label: 'اطّلع على سجل المعارض المستند إليه', href: '#exhibitions' } },
+    { name: 'Exhibition & Show Organizing',
+      nameAr: 'تنظيم المعارض والعروض',
+      paragraphs: [
+        'End-to-end planning for solo and group exhibitions: concept development, gallery layout, lighting and sequencing, shipping and installation logistics, and coordination with venues and press.',
+        'This service is informed by decades of showing across Sudan, Ethiopia, Europe and beyond, including work as Director of Art at the Shibir Nilotic Gallery of Modern African Art in Berlin.',
+      ],
+      paragraphsAr: [
+        'تخطيط شامل للمعارض الفردية والجماعية: تطوير المفهوم، تصميم مساحة المعرض، الإضاءة والتسلسل، لوجستيات الشحن والتركيب، والتنسيق مع الأماكن والصحافة.',
+        'تستند هذه الخدمة إلى عقود من إقامة المعارض في السودان وإثيوبيا وأوروبا وخارجها، بما في ذلك العمل كمدير للفن في صالة شبير النيلية للفن الأفريقي الحديث ببرلين.',
+      ],
+      example: { label: 'Reference: past solo and group exhibitions', href: '#exhibitions' },
+      exampleAr: { label: 'مرجع: معارض فردية وجماعية سابقة', href: '#exhibitions' } },
+    { name: 'Framing & Mounting',
+      nameAr: 'التأطير والتركيب',
+      paragraphs: [
+        'Guidance on the right framing, mounting or wrapping approach for each medium — canvas, archival paper, relief and sculpture each behave differently under glass, in a frame, or wall-mounted, and the wrong choice can flatten or damage the piece.',
+        'Recommendations are paired with the sizing options on this page, so a work can move from print to a properly framed piece ready for a specific wall.',
+      ],
+      paragraphsAr: [
+        'إرشادات حول أنسب طريقة للتأطير أو التركيب أو التغليف لكل خامة — فالقماش والورق الأرشيفي والبارز والنحت يتصرف كل منها بشكل مختلف خلف الزجاج أو داخل إطار أو معلقًا على الجدار، والاختيار الخاطئ قد يُسطّح العمل أو يتلفه.',
+        'تُقدَّم التوصيات مقترنة بخيارات المقاسات في هذه الصفحة، بحيث ينتقل العمل من مطبوعة إلى قطعة مؤطرة بشكل صحيح وجاهزة لجدار محدد.',
+      ],
+      example: { label: 'See print & framing size guide', href: '#prints' },
+      exampleAr: { label: 'اطّلع على دليل مقاسات الطباعة والتأطير', href: '#prints' } },
+    { name: 'Critique & Evaluation',
+      nameAr: 'النقد والتقييم',
+      paragraphs: [
+        'Professional critique of artworks and portfolios, offered from the perspective of a working sculptor, painter and long-time professor of sculpture at the College of Fine and Applied Art, Sudan University of Science and Technology.',
+        'Evaluations cover technical execution, conceptual clarity and market context, useful for artists preparing a submission, a portfolio, or a body of work for exhibition.',
+      ],
+      paragraphsAr: [
+        'نقد احترافي للأعمال الفنية وملفات الأعمال، من منظور نحّات ورسّام عامل وأستاذ نحت منذ زمن طويل بكلية الفنون الجميلة والتطبيقية، جامعة السودان للعلوم والتكنولوجيا.',
+        'تغطي التقييمات التنفيذ التقني والوضوح المفاهيمي وسياق السوق، وهي مفيدة للفنانين الذين يُعدّون تقديمًا أو ملف أعمال أو مجموعة أعمال لمعرض.',
+      ],
+      example: { label: 'Inquire about a critique session', href: 'mailto:shangalart@gmail.com' },
+      exampleAr: { label: 'استفسر عن جلسة نقد', href: 'mailto:shangalart@gmail.com' } },
+    { name: 'Network Establishment',
+      nameAr: 'بناء العلاقات والشبكات',
+      paragraphs: [
+        'Introductions and connections built over a career spanning Sudan, Ethiopia and Europe — linking artists and institutions with galleries, collectors, academics and cultural organizations relevant to their work.',
+        'This includes ongoing ties to academic art programs and gallery partners such as the Shibir Nilotic Gallery of Modern African Art, Berlin.',
+      ],
+      paragraphsAr: [
+        'تعارف واتصالات بُنيت على مدى مسيرة مهنية امتدت عبر السودان وإثيوبيا وأوروبا — تربط الفنانين والمؤسسات بصالات العرض والمقتنين والأكاديميين والمنظمات الثقافية ذات الصلة بعملهم.',
+        'يشمل ذلك روابط مستمرة مع برامج فنية أكاديمية وشركاء صالات عرض مثل صالة شبير النيلية للفن الأفريقي الحديث في برلين.',
+      ],
+      example: { label: 'See affiliation & studio details', href: '#contact' },
+      exampleAr: { label: 'اطّلع على تفاصيل الانتساب والمرسم', href: '#contact' } },
+    { name: 'Art Dealer Introductions',
+      nameAr: 'التعريف بتجار الأعمال الفنية',
+      paragraphs: [
+        'Introductions to trusted dealers and gallerists for artists and collectors seeking representation, acquisition, or resale — vetted through direct professional relationships rather than cold outreach.',
+        'Particularly useful for artists new to a region\'s market, or collectors looking to place or acquire work from Sudanese and East African contemporary art.',
+      ],
+      paragraphsAr: [
+        'تعريف بتجار وأصحاب صالات عرض موثوقين للفنانين والمقتنين الباحثين عن التمثيل أو الاقتناء أو إعادة البيع — عبر علاقات مهنية مباشرة وليس تواصلاً عشوائيًا.',
+        'مفيد بشكل خاص للفنانين الجدد على سوق منطقة ما، أو للمقتنين الراغبين في اقتناء أعمال من الفن السوداني وشرق أفريقي المعاصر.',
+      ],
+      example: { label: 'Start an introduction request', href: 'mailto:shangalart@gmail.com' },
+      exampleAr: { label: 'ابدأ طلب تعريف', href: 'mailto:shangalart@gmail.com' } },
+    { name: 'Hotel Art Display & Décor Consulting',
+      nameAr: 'استشارات عرض الأعمال الفنية وديكور الفنادق',
+      paragraphs: [
+        'Curatorial and décor consulting for hotels and hospitality spaces — selecting, scaling and placing works across lobbies, corridors and guest rooms so the art reads as part of the building\'s identity rather than an afterthought.',
+        'Covers everything from a single lobby centrepiece to a full property-wide art programme, with attention to durability, lighting and maintenance in high-traffic spaces.',
+      ],
+      paragraphsAr: [
+        'استشارات تنسيقية وديكورية للفنادق والمساحات الضيافية — اختيار الأعمال وتحديد حجمها وأماكنها عبر البهو والممرات وغرف الضيوف بحيث يصبح الفن جزءًا من هوية المبنى لا مجرد إضافة لاحقة.',
+        'تغطي كل شيء من قطعة مركزية واحدة في البهو إلى برنامج فني شامل للعقار، مع الانتباه للمتانة والإضاءة والصيانة في المساحات عالية الحركة.',
+      ],
+      example: { label: 'Discuss a hospitality project', href: 'mailto:shangalart@gmail.com' },
+      exampleAr: { label: 'ناقش مشروعًا ضيافيًا', href: 'mailto:shangalart@gmail.com' } },
+    { name: 'Corporate Art Consulting',
+      nameAr: 'استشارات الفن للشركات',
+      paragraphs: [
+        'Advising corporations on art acquisition and placement for offices, headquarters and public-facing spaces — aligning selections with brand identity, budget and the practical demands of a working environment.',
+        'Includes sourcing, framing and installation coordination, plus guidance on building a collection over time rather than a one-off purchase.',
+      ],
+      paragraphsAr: [
+        'تقديم المشورة للشركات حول اقتناء الأعمال الفنية وتوزيعها في المكاتب والمقرات والمساحات العامة — بما يتماشى مع هوية العلامة التجارية والميزانية والمتطلبات العملية لبيئة العمل.',
+        'يشمل ذلك التوريد والتأطير وتنسيق التركيب، إضافة إلى إرشادات لبناء مجموعة فنية بمرور الوقت بدلاً من شراء لمرة واحدة.',
+      ],
+      example: { label: 'Inquire about a corporate programme', href: 'mailto:shangalart@gmail.com' },
+      exampleAr: { label: 'استفسر عن برنامج للشركات', href: 'mailto:shangalart@gmail.com' } },
+    { name: 'NGO & Institutional Art Projects',
+      nameAr: 'مشاريع فنية للمنظمات غير الحكومية والمؤسسات',
+      paragraphs: [
+        'Executing art projects and commissions for NGOs and institutions, from concept and community engagement through to fabrication and installation — drawing on experience designing the Human Rights Memorial Monument for the African Union.',
+        'Suited to memorials, public art, and projects where the artwork needs to carry a specific civic or humanitarian message.',
+      ],
+      paragraphsAr: [
+        'تنفيذ مشاريع وتكليفات فنية للمنظمات غير الحكومية والمؤسسات، من المفهوم والمشاركة المجتمعية إلى التصنيع والتركيب — بالاستناد إلى خبرة تصميم نصب ذكرى حقوق الإنسان للاتحاد الأفريقي.',
+        'مناسب للنُصب التذكارية والفن العام والمشاريع التي يجب أن يحمل فيها العمل الفني رسالة مدنية أو إنسانية محددة.',
+      ],
+      example: { label: 'Discuss an institutional commission', href: 'mailto:shangalart@gmail.com' },
+      exampleAr: { label: 'ناقش تكليفًا مؤسسيًا', href: 'mailto:shangalart@gmail.com' } },
+  ];
+
+  mediaClippings = [
+    { src: 'uploads/029a3396-8ec8-4356-8077-d3817ebf31c7.avif', caption: 'Alsahafa newspaper, 11 Nov 2007', captionAr: 'صحيفة الصحافة، ١١ نوفمبر ٢٠٠٧' },
+    { src: 'uploads/22e69143-574c-4de4-bf7a-5e5fc9d83cce.avif', caption: 'Press interview, Khartoum', captionAr: 'مقابلة صحفية، الخرطوم' },
+    { src: 'uploads/349ed180-c41e-40f0-9fb4-6598f308e2d5.avif', caption: 'Magazine feature, artist portraits', captionAr: 'تحقيق مجلة، صور بورتريه للفنان' },
+    { src: 'uploads/3d64e064-11fa-4ad2-bae9-01df0a6fa530.avif', caption: 'Interview feature', captionAr: 'تحقيق حواري' },
+    { src: 'uploads/89f70abd-d96f-4fa1-90b7-7867d662736b.avif', caption: 'Al-Shuruq magazine feature', captionAr: 'تحقيق مجلة الشروق' },
+    { src: 'uploads/8cd54c4c-dbaf-4946-aac3-346d2265ccbb.avif', caption: 'Magazine profile, Hawas', captionAr: 'ملف مجلة هواس' },
+    { src: 'uploads/93b6abba-fbd8-473d-b008-cbf0f7d37a16.avif', caption: 'Al-Shuruq magazine coverage', captionAr: 'تغطية مجلة الشروق' },
+    { src: 'uploads/94a1786d-0f21-4ee4-b9ee-0b30bd632c1c.avif', caption: 'Al-Yawm Al-Tali interview', captionAr: 'مقابلة صحيفة اليوم التالي' },
+    { src: 'uploads/ae2a2d87-779a-4b0f-9e64-2da10b479e00.avif', caption: 'German Cultural Center exhibition coverage', captionAr: 'تغطية معرض المركز الثقافي الألماني' },
+    { src: 'uploads/bcb37e8f-ec20-4a70-aaf8-b0bd82dd0475.avif', caption: 'Al-Horeya newspaper feature, 2009', captionAr: 'تحقيق صحيفة الحرية، ٢٠٠٩' },
+    { src: 'uploads/d06fdbed-aed8-4da8-9a46-fb562d87aef4.avif', caption: 'Press clipping', captionAr: 'قصاصة صحفية' },
+    { src: 'uploads/d36e83db-53e8-4e84-b52e-fbafda5de51f.avif', caption: 'National Council for Arts coverage, 1988', captionAr: 'تغطية المجلس القومي للفنون، ١٩٨٨' },
+    { src: 'uploads/d9e0d667-5b9d-4c6b-922c-1e2c590eac29.avif', caption: 'Press clipping', captionAr: 'قصاصة صحفية' },
+    { src: 'uploads/e59019bf-531f-4694-b1b7-3a9c4f8bc03b.avif', caption: 'Newspaper feature, 2013', captionAr: 'تحقيق صحفي، ٢٠١٣' },
+  ];
+
+  mediums = ['All', 'Painting', 'Sculpture', 'Drawing', 'Relief'];
+
+  contactEmail = 'shangalart@gmail.com';
+  instagramUrl = 'https://www.instagram.com/shangal_hassan_';
+  facebookUrl = 'https://www.facebook.com/shangal.hassan';
+
+  // TODO(artist): replace with real PayPal.me username, e.g. 'https://paypal.me/ShangalHassan'
+  paypalBase = 'https://paypal.me/ShangalHassanArt';
+
+  // TODO(artist): replace with real bank details
+  bankDetails = {
+    accountName: 'Add account holder name',
+    bankName: 'Add bank name',
+    iban: 'Add IBAN / account number',
+    swift: 'Add SWIFT / BIC',
+  };
+
+  titleMapAr = {
+    'Painting I': 'لوحة ١', 'Painting II': 'لوحة ٢', 'Painting III': 'لوحة ٣', 'Painting IV': 'لوحة ٤', 'Painting V': 'لوحة ٥',
+    'Painting VI': 'لوحة ٦', 'Painting VII': 'لوحة ٧', 'Painting VIII': 'لوحة ٨', 'Painting IX': 'لوحة ٩', 'Painting X': 'لوحة ١٠',
+    'Portrait Studies I': 'دراسات بورتريه ١', 'Portrait Studies II': 'دراسات بورتريه ٢', 'Portrait Studies III': 'دراسات بورتريه ٣',
+    'Portrait Studies IV': 'دراسات بورتريه ٤', 'Portrait Studies V': 'دراسات بورتريه ٥', 'Portrait Studies VI': 'دراسات بورتريه ٦',
+    'Tricolour Portrait': 'بورتريه ثلاثي الألوان', 'Reclining Figures at Dusk': 'أشكال مستلقية عند الغسق', 'Ink Study, Profile': 'دراسة حبر، ملامح جانبية',
+    'Rose Mask': 'قناع وردي', 'Two Figures, Blue Ground': 'شخصان، أرضية زرقاء', 'Gathering of Faces': 'تجمّع الوجوه', 'Vertical Figures': 'أشكال عمودية',
+    'Blue and Red Profile': 'ملامح زرقاء وحمراء', 'Two Standing Forms': 'شكلان قائمان',
+    'Painted Wood Bust': 'تمثال نصفي خشبي مطلي', 'Head Study, Profile': 'دراسة رأس، ملامح جانبية', 'Standing Figure': 'شخصية واقفة',
+    'Bronze Head I': 'رأس برونزي ١', 'Bronze Head II': 'رأس برونزي ٢', 'Red Meroitic Figure': 'شخصية مروية حمراء',
+    'Head Study, Right Profile': 'دراسة رأس، الملامح اليمنى', 'Bust of a Woman': 'تمثال نصفي لامرأة',
+    'Seated Figure Study': 'دراسة شخصية جالسة', 'Embracing Form': 'شكل متعانق', 'Two Line Studies': 'دراستان خطيتان',
+    'Profile in Repose': 'ملامح في سكون', 'Nested Forms': 'أشكال متداخلة', 'Woman with Woven Sash': 'امرأة بحزام منسوج',
+    'Seated Nude, Back View': 'عارية جالسة، منظر خلفي', 'Two Seated Studies': 'دراستان لجالسين', 'Gallery Visitors': 'زوار المعرض',
+    'Seated Figure, Charcoal': 'شخصية جالسة، فحم', 'Reclining Embrace': 'عناق مستلقٍ', 'Standing Nude, Raised Arm': 'عارية واقفة، ذراع مرفوعة',
+    'Woman with Braided Hair': 'امرأة بشعر مضفور', 'Woman with Braided Hair II': 'امرأة بشعر مضفور ٢', 'Standing Figure, Elongated': 'شخصية واقفة ممشوقة',
+    'Two Women, Patterned Skirts': 'امرأتان، تنانير مزخرفة', 'Seated Woman with Flowers': 'امرأة جالسة مع الزهور', 'Two Figures in Ink': 'شخصان بالحبر',
+    'Woman with Flowing Hair': 'امرأة بشعر منسدل', 'Two Standing Figures, Outline': 'شخصان واقفان، تخطيط', 'Robed Figure in Wind': 'شخصية مسربلة في الريح',
+    'Howling Figure Study': 'دراسة شخصية صارخة', 'Layered Torso Study': 'دراسة جذع متعدد الطبقات', 'Hands at the Bar': 'أيادٍ على الحاجز',
+    'Gathering Figures': 'شخصيات مجتمعة', 'Layered Profile Study': 'دراسة ملامح متعددة الطبقات', 'Layered Profile Study II': 'دراسة ملامح متعددة الطبقات ٢',
+    'Draped Figure with Belt': 'شخصية مدرّجة بحزام',
+    'Clay Fragment': 'شظية طينية', 'Ancestral Masks': 'أقنعة الأسلاف', 'Blue Mask Relief': 'بارز قناع أزرق', 'Windborne': 'محمول بالريح',
+    'Terracotta Head Relief': 'بارز رأس فخاري', 'Procession Frieze': 'إفريز موكب', 'Meroitic Queen I': 'ملكة مروية ١', 'Ram-Headed Deity': 'إله برأس كبش',
+    'Meroitic Queen II': 'ملكة مروية ٢', 'Reclining Figure': 'شخصية مستلقية', 'Standard Bearer': 'حامل الراية', 'Nubian Crown': 'تاج نوبي',
+    'The Offering': 'القربان', 'Twin Profiles': 'ملامح توأم', 'Two Geese': 'إوزتان', 'Hominid Realms': 'ممالك بشرية', 'Gilded Head': 'رأس مذهّب',
+    'Flowing Form': 'شكل متدفق', 'Interwoven Embrace': 'عناق متشابك', 'Two Figures': 'شخصان', 'Turning Head': 'رأس مستدير', 'Scattered Stones': 'حجارة متناثرة',
+    'Companions': 'رفقاء', 'Divided Face': 'وجه منقسم', 'Woman with Two Braids': 'امرأة بضفيرتين',
+  };
+
+  techniqueMapAr = {
+    'Acrylic on canvas': 'أكريليك على قماش', 'Mixed media studies on paper': 'دراسات وسائط مختلطة على ورق',
+    'Acrylic and ink on canvas': 'أكريليك وحبر على قماش', 'Ink and acrylic on canvas': 'حبر وأكريليك على قماش',
+    'Carved and painted wood': 'خشب منحوت ومطلي', 'Terracotta clay': 'طين فخاري', 'Cast bronze': 'برونز مصبوب', 'Cast plaster': 'جبس مصبوب',
+    'Pencil on paper': 'قلم رصاص على ورق', 'Pen on paper': 'قلم حبر على ورق', 'Ink wash on paper': 'غسل حبر على ورق',
+    'Charcoal on paper': 'فحم على ورق', 'Pen and pencil on paper': 'قلم حبر ورصاص على ورق',
+    'Carved and painted wood relief': 'بارز خشبي منحوت ومطلي', 'Carved relief': 'بارز منحوت', 'Carved wood relief': 'بارز خشبي منحوت',
+    'Meroitic-inspired carved wood': 'خشب منحوت بإلهام مروي', 'Carved and painted clay relief': 'بارز طيني منحوت ومطلي',
+    'Carved stone relief': 'بارز حجري منحوت', 'Carved and painted relief on wood': 'بارز منحوت ومطلي على خشب',
+  };
+
+  palette = [
+    ['#3c3226', '#4a3d2c'],
+    ['#4a2f24', '#5c3b2a'],
+    ['#2f3a30', '#3d4a3d'],
+    ['#33323f', '#44435a'],
+  ];
+
+  // Real photographs pulled from the live site's public preview images.
+  // TODO(artist): swap in high-resolution originals and add the remaining pieces' photos, dimensions & prices.
+  works = [
+    { title: 'Painting I', medium: 'Painting', technique: 'Acrylic on canvas', dimensions: 'Add dimensions', price: null, image: 'uploads/410191273_1581277002279521_9154537889380311516_n.jpg' },
+    { title: 'Painting II', medium: 'Painting', technique: 'Acrylic on canvas', dimensions: 'Add dimensions', price: null, image: 'uploads/410199466_1581276965612858_5967150648176403812_n.jpg' },
+    { title: 'Painting III', medium: 'Painting', technique: 'Acrylic on canvas', dimensions: 'Add dimensions', price: null, image: 'uploads/410839146_1581276858946202_2422120952290792106_n.jpg' },
+    { title: 'Painting IV', medium: 'Painting', technique: 'Acrylic on canvas', dimensions: 'Add dimensions', price: null, image: 'uploads/410840102_1581276898946198_8776490915815595396_n.jpg' },
+    { title: 'Painting V', medium: 'Painting', technique: 'Acrylic on canvas', dimensions: 'Add dimensions', price: null, image: 'uploads/410868606_1581276785612876_3643416822015848199_n.jpg' },
+    { title: 'Painting VI', medium: 'Painting', technique: 'Acrylic on canvas', dimensions: 'Add dimensions', price: null, image: 'uploads/410886674_1581276635612891_2397555958442234304_n.jpg' },
+    { title: 'Painting VII', medium: 'Painting', technique: 'Acrylic on canvas', dimensions: 'Add dimensions', price: null, image: 'uploads/410889798_1581276698946218_1523805377344614200_n.jpg' },
+    { title: 'Painting VIII', medium: 'Painting', technique: 'Acrylic on canvas', dimensions: 'Add dimensions', price: null, image: 'uploads/410911974_1581276825612872_4388139692886255623_n.jpg' },
+    { title: 'Painting IX', medium: 'Painting', technique: 'Acrylic on canvas', dimensions: 'Add dimensions', price: null, image: 'uploads/410935583_1581276732279548_1135332546045701501_n.jpg' },
+    { title: 'Painting X', medium: 'Painting', technique: 'Acrylic on canvas', dimensions: 'Add dimensions', price: null, image: 'uploads/411046055_1581276665612888_7887891419431059152_n.jpg' },
+    { title: 'Portrait Studies I', medium: 'Painting', technique: 'Mixed media studies on paper', dimensions: 'Study sheet', price: null, image: 'uploads/439831184_1653429591730928_6841165142944767060_n.jpg' },
+    { title: 'Portrait Studies II', medium: 'Painting', technique: 'Mixed media studies on paper', dimensions: 'Study sheet', price: null, image: 'uploads/439841742_1653429815064239_9085573008667362698_n.jpg' },
+    { title: 'Portrait Studies III', medium: 'Painting', technique: 'Mixed media studies on paper', dimensions: 'Study sheet', price: null, image: 'uploads/439856934_1653429845064236_5166309572391913174_n.jpg' },
+    { title: 'Portrait Studies IV', medium: 'Painting', technique: 'Mixed media studies on paper', dimensions: 'Study sheet', price: null, image: 'uploads/439907825_1653429728397581_3360770312320515859_n.jpg' },
+    { title: 'Portrait Studies V', medium: 'Painting', technique: 'Mixed media studies on paper', dimensions: 'Study sheet', price: null, image: 'uploads/439941232_1653429691730918_5187740378980453571_n.jpg' },
+    { title: 'Portrait Studies VI', medium: 'Painting', technique: 'Mixed media studies on paper', dimensions: 'Study sheet', price: null, image: 'uploads/439985717_1653429758397578_5649174612281983063_n.jpg' },
+    { title: 'Tricolour Portrait', medium: 'Painting', technique: 'Acrylic and ink on canvas', dimensions: 'Add dimensions', price: null, image: 'uploads/21b4edbe-5b03-45f1-b9ae-f5e1ef0898c4.avif' },
+    { title: 'Reclining Figures at Dusk', medium: 'Painting', technique: 'Acrylic on canvas', dimensions: 'Add dimensions', price: null, image: 'uploads/b9a7109c-a06a-411e-874e-50df095379a2.avif' },
+    { title: 'Ink Study, Profile', medium: 'Painting', technique: 'Ink and acrylic on canvas', dimensions: 'Add dimensions', price: null, image: 'uploads/bc446025-586e-4d1a-bb46-d96631f3b1ba.avif' },
+    { title: 'Rose Mask', medium: 'Painting', technique: 'Acrylic on canvas', dimensions: 'Add dimensions', price: null, image: 'uploads/d885d643-9d8a-4a0d-9ed5-452b6806dd86.avif' },
+    { title: 'Two Figures, Blue Ground', medium: 'Painting', technique: 'Acrylic on canvas', dimensions: 'Add dimensions', price: null, image: 'uploads/da15b1f1-257b-4d5d-82ea-6a1c4e135dc1.avif' },
+    { title: 'Gathering of Faces', medium: 'Painting', technique: 'Acrylic and ink on canvas', dimensions: 'Add dimensions', price: null, image: 'uploads/dabbacb5-0b79-415f-843f-30859e5d11fc.avif' },
+    { title: 'Vertical Figures', medium: 'Painting', technique: 'Acrylic on canvas', dimensions: 'Add dimensions', price: null, image: 'uploads/e9af73cd-5282-4c64-866a-eae2921d100e.avif' },
+    { title: 'Blue and Red Profile', medium: 'Painting', technique: 'Acrylic on canvas', dimensions: 'Add dimensions', price: null, image: 'uploads/e68487b6-4f7d-47cf-bb2a-41d91fe7f226.avif' },
+    { title: 'Two Standing Forms', medium: 'Painting', technique: 'Acrylic on canvas', dimensions: 'Add dimensions', price: null, image: 'uploads/0a1b4374-8e5e-4264-bacd-e18e8b38d69f.avif' },
+    { title: 'Painted Wood Bust', medium: 'Sculpture', technique: 'Carved and painted wood', dimensions: 'Add dimensions', price: null, image: 'uploads/c2b3193ac1b28cf1.jpg' },
+    { title: 'Head Study, Profile', medium: 'Sculpture', technique: 'Terracotta clay', dimensions: 'Add dimensions', price: null, image: 'uploads/ce95e696-c648-433d-881c-e1404ada99cc.jpg' },
+    { title: 'Standing Figure', medium: 'Sculpture', technique: 'Terracotta clay', dimensions: 'Add dimensions', price: null, image: 'uploads/d7f55851-8ae9-4d96-b7a7-d339bfd0418a.avif' },
+    { title: 'Bronze Head I', medium: 'Sculpture', technique: 'Cast bronze', dimensions: 'Add dimensions', price: null, image: 'uploads/2b99ea2c-609c-4886-b5fe-1ca96c8bf92f.jpg' },
+    { title: 'Bronze Head II', medium: 'Sculpture', technique: 'Cast bronze', dimensions: 'Add dimensions', price: null, image: 'uploads/2c97ba18-f533-4739-bf89-660c242a3be8.avif' },
+    { title: 'Red Meroitic Figure', medium: 'Sculpture', technique: 'Carved and painted wood', dimensions: 'Add dimensions', price: null, image: 'uploads/91c955fc-d277-4812-b657-c264c0631fcb.avif' },
+    { title: 'Head Study, Right Profile', medium: 'Sculpture', technique: 'Terracotta clay', dimensions: 'Add dimensions', price: null, image: 'uploads/95a0fcab-438b-4888-85cf-edf8a95d076f.avif' },
+    { title: 'Bust of a Woman', medium: 'Sculpture', technique: 'Cast plaster', dimensions: 'Add dimensions', price: null, image: 'uploads/121ad12b-7170-466c-a9be-d5a7797b9674.jpg' },
+    { title: 'Seated Figure Study', medium: 'Drawing', technique: 'Pencil on paper', dimensions: 'Add dimensions', price: null, image: 'uploads/f2fab662-fa88-4e91-8f1f-ddd6cfbd0df2.avif' },
+    { title: 'Embracing Form', medium: 'Drawing', technique: 'Pencil on paper', dimensions: 'Add dimensions', price: null, image: 'uploads/ed274801-09f8-4b01-b5af-ab4c6b6023ad.avif' },
+    { title: 'Two Line Studies', medium: 'Drawing', technique: 'Pen on paper', dimensions: 'Add dimensions', price: null, image: 'uploads/ef3abccb-fc95-4378-9de7-04d0d8439b5a.avif' },
+    { title: 'Profile in Repose', medium: 'Drawing', technique: 'Pencil on paper', dimensions: 'Add dimensions', price: null, image: 'uploads/efccab25-cc4b-4368-88bf-32050bc71e45.avif' },
+    { title: 'Nested Forms', medium: 'Drawing', technique: 'Pencil on paper', dimensions: 'Add dimensions', price: null, image: 'uploads/0d26f71f-0c13-4a5a-a1fb-cf39a6f8cf0c.avif' },
+    { title: 'Woman with Woven Sash', medium: 'Drawing', technique: 'Pencil on paper', dimensions: 'Add dimensions', price: null, image: 'uploads/1cfa7552-09d8-4a75-beca-938f110976b2.avif' },
+    { title: 'Seated Nude, Back View', medium: 'Drawing', technique: 'Ink wash on paper', dimensions: 'Add dimensions', price: null, image: 'uploads/04c0d4a5-ecce-40dd-8730-60e80475ed56.avif' },
+    { title: 'Two Seated Studies', medium: 'Drawing', technique: 'Ink wash on paper', dimensions: 'Add dimensions', price: null, image: 'uploads/6e3d46c5-32a5-4e03-b221-a09adb9900c5.avif' },
+    { title: 'Gallery Visitors', medium: 'Drawing', technique: 'Pen and pencil on paper', dimensions: 'Add dimensions', price: null, image: 'uploads/07aa58a3-6584-4be9-b0c3-6bf90cd4087d.avif' },
+    { title: 'Seated Figure, Charcoal', medium: 'Drawing', technique: 'Charcoal on paper', dimensions: 'Add dimensions', price: null, image: 'uploads/8a14b985-3990-4f23-9065-a32cbf4836f1.avif' },
+    { title: 'Reclining Embrace', medium: 'Drawing', technique: 'Pencil on paper', dimensions: 'Add dimensions', price: null, image: 'uploads/8fe62276-a1f1-4d08-a6ae-ddf8d62f0cde.avif' },
+    { title: 'Standing Nude, Raised Arm', medium: 'Drawing', technique: 'Pencil on paper', dimensions: 'Add dimensions', price: null, image: 'uploads/09d67fb7-730e-4e22-90b0-790c58573bad.avif' },
+    { title: 'Woman with Braided Hair', medium: 'Drawing', technique: 'Pencil on paper', dimensions: 'Add dimensions', price: null, image: 'uploads/9a8cb7db-6e15-489e-8aca-84e70cd20bf2.avif' },
+    { title: 'Woman with Braided Hair II', medium: 'Drawing', technique: 'Pencil on paper', dimensions: 'Add dimensions', price: null, image: 'uploads/035f8193-042b-4868-8b41-e469add98d04.avif' },
+    { title: 'Standing Figure, Elongated', medium: 'Drawing', technique: 'Pencil on paper', dimensions: 'Add dimensions', price: null, image: 'uploads/077f43aa-b023-41d4-ad02-e1f8fbb7d8f1.avif' },
+    { title: 'Two Women, Patterned Skirts', medium: 'Drawing', technique: 'Pen on paper', dimensions: 'Add dimensions', price: null, image: 'uploads/251af8a1-e5dd-4567-986d-b11e5743102c.avif' },
+    { title: 'Seated Woman with Flowers', medium: 'Drawing', technique: 'Pencil on paper', dimensions: 'Add dimensions', price: null, image: 'uploads/2944a2c5-d274-486f-9270-d1d335161087.avif' },
+    { title: 'Two Figures in Ink', medium: 'Drawing', technique: 'Ink wash on paper', dimensions: 'Add dimensions', price: null, image: 'uploads/9303ce72-12eb-456a-bb45-e96fdd31b3aa.avif' },
+    { title: 'Woman with Flowing Hair', medium: 'Drawing', technique: 'Pen on paper', dimensions: 'Add dimensions', price: null, image: 'uploads/675084fa-ae99-4c6a-9b55-d829659665ae.avif' },
+    { title: 'Two Standing Figures, Outline', medium: 'Drawing', technique: 'Pen on paper', dimensions: 'Add dimensions', price: null, image: 'uploads/763893d9-3579-4fb0-a481-484bfd3bad35.avif' },
+    { title: 'Robed Figure in Wind', medium: 'Drawing', technique: 'Ink wash on paper', dimensions: 'Add dimensions', price: null, image: 'uploads/973274f9-7cc9-41b9-beb9-da2038a683c8.avif' },
+    { title: 'Howling Figure Study', medium: 'Drawing', technique: 'Pencil on paper', dimensions: 'Add dimensions', price: null, image: 'uploads/89789812-9d86-471a-aeab-7073f6e1745a.avif' },
+    { title: 'Layered Torso Study', medium: 'Drawing', technique: 'Pencil on paper', dimensions: 'Add dimensions', price: null, image: 'uploads/b49cf3fc-a57d-4395-a2ad-fdc3019bc5e4.avif' },
+    { title: 'Hands at the Bar', medium: 'Drawing', technique: 'Pencil on paper', dimensions: 'Add dimensions', price: null, image: 'uploads/c68e39b4-a58f-47f4-98ca-61d82e8d1b09.avif' },
+    { title: 'Gathering Figures', medium: 'Drawing', technique: 'Charcoal on paper', dimensions: 'Add dimensions', price: null, image: 'uploads/d2dafa0a-242f-4dad-9dd7-6771443706b3.avif' },
+    { title: 'Layered Profile Study', medium: 'Drawing', technique: 'Pencil on paper', dimensions: 'Add dimensions', price: null, image: 'uploads/dd2d4183-b9f0-48d3-a2cc-5891c77d3168.avif' },
+    { title: 'Layered Profile Study II', medium: 'Drawing', technique: 'Pencil on paper', dimensions: 'Add dimensions', price: null, image: 'uploads/ddb3c3ee-6348-4690-a485-cb3a92d66038.avif' },
+    { title: 'Draped Figure with Belt', medium: 'Drawing', technique: 'Pencil on paper', dimensions: 'Add dimensions', price: null, image: 'uploads/e88485a9-4c4c-49de-8f5a-464755cbd16e.avif' },
+    { title: 'Clay Fragment', medium: 'Relief', year: '2014', dimensions: 'Add dimensions', price: null,
+      image: 'https://storage.e.jimdo.com/cdn-cgi/image/quality=85,fit=crop,format=auto,width=1080,height=567/image/459264349/2bcc71f6-2764-47ea-aaf3-f0b58dfd2019.jpg' },
+    { title: 'Ancestral Masks', medium: 'Relief', technique: 'Carved and painted wood relief', dimensions: 'Add dimensions', price: null, image: 'uploads/3d814053fed90b03.jpg' },
+    { title: 'Blue Mask Relief', medium: 'Relief', technique: 'Carved and painted wood relief', dimensions: 'Add dimensions', price: null, image: 'uploads/8af545f09aa336e0.jpg' },
+    { title: 'Windborne', medium: 'Relief', technique: 'Carved relief', dimensions: 'Add dimensions', price: null, image: 'uploads/94ec2b10373d0916.jpg' },
+    { title: 'Terracotta Head Relief', medium: 'Relief', technique: 'Carved wood relief', dimensions: 'Add dimensions', price: null, image: 'uploads/445b5581f1d0b04e.jpg' },
+    { title: 'Procession Frieze', medium: 'Relief', technique: 'Meroitic-inspired carved wood', dimensions: 'Add dimensions', price: null, image: 'uploads/13001051_103792783361291_7104796812798746605_n.jpg' },
+    { title: 'Meroitic Queen I', medium: 'Relief', technique: 'Meroitic-inspired carved wood', dimensions: 'Add dimensions', price: null, image: 'uploads/13495028_143261789414390_4382887943644257295_n.jpg' },
+    { title: 'Ram-Headed Deity', medium: 'Relief', technique: 'Meroitic-inspired carved wood', dimensions: 'Add dimensions', price: null, image: 'uploads/13497824_144342915972944_1416507845340076943_o.jpg' },
+    { title: 'Meroitic Queen II', medium: 'Relief', technique: 'Meroitic-inspired carved wood', dimensions: 'Add dimensions', price: null, image: 'uploads/410881195_1581813352225886_7641685698257277293_n.jpg' },
+    { title: 'Reclining Figure', medium: 'Relief', technique: 'Carved and painted clay relief', dimensions: 'Add dimensions', price: null, image: 'uploads/33e5e8f7-bb41-44b8-9a02-dfd163a4c62d.avif' },
+    { title: 'Standard Bearer', medium: 'Relief', technique: 'Carved and painted clay relief', dimensions: 'Add dimensions', price: null, image: 'uploads/7033be69-4890-40b0-ba7c-b58e9549fed2.avif' },
+    { title: 'Nubian Crown', medium: 'Relief', technique: 'Carved wood relief', dimensions: 'Add dimensions', price: null, image: 'uploads/8369a763-8867-4730-b2c9-30cfb9f10f6d.avif' },
+    { title: 'The Offering', medium: 'Relief', technique: 'Carved and painted clay relief', dimensions: 'Add dimensions', price: null, image: 'uploads/a17bfcec-6187-4459-81dc-f19cf44ce81c.avif' },
+    { title: 'Twin Profiles', medium: 'Relief', technique: 'Carved wood relief', dimensions: 'Add dimensions', price: null, image: 'uploads/a88fdde5-d879-46e1-a148-ef5eb1122ce6.avif' },
+    { title: 'Two Geese', medium: 'Relief', technique: 'Carved wood relief', dimensions: 'Add dimensions', price: null, image: 'uploads/a222e47a-5594-4ac7-b90b-e1049926b9d8.avif' },
+    { title: 'Hominid Realms', medium: 'Relief', technique: 'Carved and painted wood relief', dimensions: 'Add dimensions', price: null, image: 'uploads/cc7bab93-1c1b-426f-afb0-5766edea3998.avif' },
+    { title: 'Gilded Head', medium: 'Relief', technique: 'Carved and painted wood relief', dimensions: 'Add dimensions', price: null, image: 'uploads/b7968ba9-6ceb-494e-a138-9f061f6a21cf.avif' },
+    { title: 'Flowing Form', medium: 'Relief', technique: 'Carved stone relief', dimensions: 'Add dimensions', price: null, image: 'uploads/4e6b7876-b09b-48d8-ae58-29f064d566c9.avif' },
+    { title: 'Interwoven Embrace', medium: 'Relief', technique: 'Carved and painted relief on wood', dimensions: 'Add dimensions', price: null, image: 'uploads/1e05ebec-6fab-4914-9454-c3f0f2bc8bb4.avif' },
+    { title: 'Two Figures', medium: 'Relief', technique: 'Carved wood relief', dimensions: 'Add dimensions', price: null, image: 'uploads/2e6b45ba-a515-4411-a1dc-f36b0d2c5089.avif' },
+    { title: 'Turning Head', medium: 'Relief', technique: 'Carved and painted relief on wood', dimensions: 'Add dimensions', price: null, image: 'uploads/3c522536-58b7-47b6-90d4-cf45ae5ec5c8.avif' },
+    { title: 'Scattered Stones', medium: 'Relief', technique: 'Carved wood relief', dimensions: 'Add dimensions', price: null, image: 'uploads/68247142-5824-41b8-bbf7-164a6cedf7e6.avif' },
+    { title: 'Companions', medium: 'Relief', technique: 'Carved wood relief', dimensions: 'Add dimensions', price: null, image: 'uploads/6bee5a0e-8552-47da-9ab0-69f284baa0b2.avif' },
+    { title: 'Divided Face', medium: 'Relief', technique: 'Carved wood relief', dimensions: 'Add dimensions', price: null, image: 'uploads/121b942b-de00-47ac-a0b3-a0eec51dc0df.avif' },
+    { title: 'Woman with Two Braids', medium: 'Relief', technique: 'Carved wood relief', dimensions: 'Add dimensions', price: null, image: 'uploads/f0823363-3de5-42ab-b39c-62ef94fd8793.avif' },
+  ];
+
+  exhibitions = [
+    { year: '2027', title: 'The XVI Florence Biennale', titleAr: 'بينالي فلورنسا السادس عشر', detail: 'Artist application accepted · 23–31 Oct, Florence, Italy', detailAr: 'قُبل طلب مشاركة الفنان · ٢٣–٣١ أكتوبر، فلورنسا، إيطاليا' },
+    { year: '2026', title: '"Atlante dell\'Arte Contemporanea" — Art Book', titleAr: 'كتاب «أطلس الفن المعاصر»', detail: 'Certificate of Merit · Presented at MoMA, the Met, Art Basel Miami, Frankfurt Book Expo & Venice Biennale · Rome, Italy', detailAr: 'شهادة تقدير · عُرض في متحف الفن الحديث والمتروبوليتان وآرت بازل ميامي ومعرض فرانكفورت للكتاب وبينالي البندقية · روما، إيطاليا' },
+    { year: '2026', title: 'MoMA Book Launch — Celeste Bartos Theater', titleAr: 'إطلاق كتاب متحف الفن الحديث — مسرح سيليست بارتوس', detail: 'Selected among 100 artists · Virtual group exhibition, digital certificate · 19 Jun, New York, USA', detailAr: 'من ضمن ١٠٠ فنان مختار · معرض جماعي افتراضي، شهادة رقمية · ١٩ يونيو، نيويورك، الولايات المتحدة' },
+    { year: '2025', title: 'The Open Gallery — Teatro Argentino de La Plata', titleAr: 'المعرض المفتوح — مسرح أرخنتينو دي لا بلاتا', detail: 'Virtual group exhibition · 12 Sep, Buenos Aires, Argentina', detailAr: 'معرض جماعي افتراضي · ١٢ سبتمبر، بوينس آيرس، الأرجنتين' },
+    { year: '2025', title: 'International Prize — Artists on the Côte d\'Azur', titleAr: 'جائزة دولية — فنانون على الريفييرا الفرنسية', detail: 'Musée National du Sport · Published in "Master Artist to Collect" Vol. IV · 12 Sep, Nice, France', detailAr: 'المتحف الوطني للرياضة · نُشر في «فنان رئيسي للاقتناء» المجلد الرابع · ١٢ سبتمبر، نيس، فرنسا' },
+    { year: '2025', title: 'Visual Art Journal — Artist Profile', titleAr: 'مجلة الفن البصري — ملف الفنان', detail: 'Print Issue #32 · 24 Jul', detailAr: 'العدد المطبوع رقم ٣٢ · ٢٤ يوليو' },
+    { year: '2025', title: 'Civic Museum of Villa Paolina', titleAr: 'المتحف المدني لفيلا باولينا', detail: '11–20 Jul, Viareggio, Italy', detailAr: '١١–٢٠ يوليو، فياريجو، إيطاليا' },
+    { year: '2025', title: 'Intercontinental Biennial Brazil', titleAr: 'البينالي القاري البرازيلي', detail: 'National Museum of the Republic · Published in Biennale book · 4–12 Jul, Brazil', detailAr: 'المتحف الوطني للجمهورية · نُشر في كتاب البينالي · ٤–١٢ يوليو، البرازيل' },
+    { year: '2025', title: '7th International Prize Leonardo da Vinci', titleAr: 'الجائزة الدولية السابعة ليوناردو دافنشي', detail: 'National Museum of Science and Technology "Leonardo da Vinci" · Published in "Master Artist to Collect" Vol. III · 7 Jun, Milan, Italy', detailAr: 'المتحف الوطني للعلوم والتكنولوجيا «ليوناردو دافنشي» · نُشر في «فنان رئيسي للاقتناء» المجلد الثالث · ٧ يونيو، ميلانو، إيطاليا' },
+    { year: '2025', title: 'Triennale dell\'Immagine 2025/2028', titleAr: 'ترينالي الصورة ٢٠٢٥/٢٠٢٨', detail: 'Diocesan and Capitular Museum of Terni — "Opera con Vista" · 6–16 Jun, Terni, Italy', detailAr: 'المتحف الأسقفي والكنسي في تيرني — «عمل بإطلالة» · ٦–١٦ يونيو، تيرني، إيطاليا' },
+    { year: '2025', title: 'World Art Dubai', titleAr: 'معرض الفن العالمي دبي', detail: 'Video Expo, Effetto Arte Foundation booth · 17–20 Apr, Dubai, UAE', detailAr: 'عرض فيديو، جناح مؤسسة إفيتو آرتي · ١٧–٢٠ أبريل، دبي، الإمارات العربية المتحدة' },
+    { year: '2025', title: 'International Prize — The New Great Masters', titleAr: 'جائزة دولية — الأساتذة الكبار الجدد', detail: 'Published in official catalogue & "Master Artists to Collect" Vol. II · 4 Apr, New York, USA', detailAr: 'نُشر في الكتالوج الرسمي و«فنانون رئيسيون للاقتناء» المجلد الثاني · ٤ أبريل، نيويورك، الولايات المتحدة' },
+    { year: '2025', title: 'ARTEXPO New York', titleAr: 'آرت إكسبو نيويورك', detail: 'Video Expo, Effetto Arte Foundation booth · 3–6 Apr, New York, USA', detailAr: 'عرض فيديو، جناح مؤسسة إفيتو آرتي · ٣–٦ أبريل، نيويورك، الولايات المتحدة' },
+    { year: '2024', title: 'International Prize — Artist at the Jubilee', titleAr: 'جائزة دولية — فنان في اليوبيل', detail: 'Published in "Contemporary Celebrity Masters" Vol. VI · 21 Dec, Rome, Italy', detailAr: 'نُشر في «أساتذة المشاهير المعاصرون» المجلد السادس · ٢١ ديسمبر، روما، إيطاليا' },
+    { year: '2024', title: '"Exodus to Inland" — Museum of DEARTE Foundation', titleAr: '«الهجرة إلى الداخل» — متحف مؤسسة ديآرتي', detail: 'Palacio Ducal de Medinaceli, Capital Culture House · Group exhibition · 15–30 Dec, Medinaceli, Spain', detailAr: 'قصر ميدينا سيلي الدوقي، بيت الثقافة الرئيسي · معرض جماعي · ١٥–٣٠ ديسمبر، ميدينا سيلي، إسبانيا' },
+    { year: '2024', title: 'Biennial of Creativity in the "Heart of Italy"', titleAr: 'بينالي الإبداع في «قلب إيطاليا»', detail: 'Effetto Arte Foundation · Ferrara Expo · 16–20 Nov, Italy', detailAr: 'مؤسسة إفيتو آرتي · معرض فيرارا · ١٦–٢٠ نوفمبر، إيطاليا' },
+    { year: '2023', title: '"Dark Tears" — Solo Exhibition', titleAr: '«دموع داكنة» — معرض فردي', detail: 'Fendika Cultural Center · Sep, Addis Ababa, Ethiopia', detailAr: 'مركز فينديكا الثقافي · سبتمبر، أديس أبابا، إثيوبيا' },
+    { year: '2023', title: 'Shibir Nilotic Gallery for Modern African Art', titleAr: 'صالة شبير النيلية للفن الأفريقي الحديث', detail: 'Joined as Director of Art / Co-Founder · Berlin, Germany', detailAr: 'انضم كمدير للفن / شريك مؤسس · برلين، ألمانيا' },
+    { year: '2022', title: 'Solo Exhibition — Downtown Gallery', titleAr: 'معرض فردي — صالة داون تاون', detail: 'Oct, Khartoum, Sudan', detailAr: 'أكتوبر، الخرطوم، السودان' },
+    { year: '2017', title: '"Inner Side" — Solo Exhibition', titleAr: '«الجانب الداخلي» — معرض فردي', detail: 'Laphto Art Gallery · Jan–Feb, Addis Ababa, Ethiopia', detailAr: 'صالة لافتو للفنون · يناير–فبراير، أديس أبابا، إثيوبيا' },
+    { year: '2013', title: 'African Union 50 Years Memorial', titleAr: 'نصب الذكرى الخمسين للاتحاد الأفريقي', detail: 'Group exhibition · Sep, Addis Ababa, Ethiopia', detailAr: 'معرض جماعي · سبتمبر، أديس أبابا، إثيوبيا' },
+    { year: '2013', title: 'Solo Exhibition — French Center', titleAr: 'معرض فردي — المركز الفرنسي', detail: 'May, Khartoum, Sudan', detailAr: 'مايو، الخرطوم، السودان' },
+    { year: '2013', title: '"Africa 1957" — Happy 50th Years Africa', titleAr: '«أفريقيا ١٩٥٧» — احتفالاً بمرور خمسين عامًا', detail: 'National Museum of Ethiopia, group exhibition · Apr–May, Addis Ababa', detailAr: 'المتحف الوطني الإثيوبي، معرض جماعي · أبريل–مايو، أديس أبابا' },
+    { year: '2013', title: 'Solo Exhibition — Lela Art Gallery', titleAr: 'معرض فردي — صالة ليلا للفنون', detail: 'Jan–Feb, Addis Ababa, Ethiopia', detailAr: 'يناير–فبراير، أديس أبابا، إثيوبيا' },
+    { year: '2012', title: 'Group Exhibition — Friendship Hall', titleAr: 'معرض جماعي — قاعة الصداقة', detail: 'Khartoum, Sudan', detailAr: 'الخرطوم، السودان' },
+    { year: '2010', title: 'Solo Exhibition — Lela Art Gallery', titleAr: 'معرض فردي — صالة ليلا للفنون', detail: 'Addis Ababa, Ethiopia', detailAr: 'أديس أبابا، إثيوبيا' },
+    { year: '2008', title: 'Solo Exhibition — Together Art Center', titleAr: 'معرض فردي — مركز تُوجذر للفنون', detail: 'Khartoum, Sudan', detailAr: 'الخرطوم، السودان' },
+    { year: '2008', title: 'Blue Nile Friends Artists — Council Hall', titleAr: 'فنانو أصدقاء النيل الأزرق — قاعة المجلس', detail: 'Group exhibition · Addis Ababa, Ethiopia', detailAr: 'معرض جماعي · أديس أبابا، إثيوبيا' },
+    { year: '2007', title: 'Group Exhibition — National Art Gallery', titleAr: 'معرض جماعي — صالة الفن الوطنية', detail: 'Addis Ababa, Ethiopia', detailAr: 'أديس أبابا، إثيوبيا' },
+    { year: '2005', title: 'Solo Exhibition — Goethe Institute', titleAr: 'معرض فردي — معهد غوته', detail: 'Khartoum, Sudan', detailAr: 'الخرطوم، السودان' },
+    { year: '2005', title: 'Khartoum, Capital of Arab Culture', titleAr: 'الخرطوم، عاصمة الثقافة العربية', detail: 'Solo exhibition · Oct, Khartoum, Sudan', detailAr: 'معرض فردي · أكتوبر، الخرطوم، السودان' },
+    { year: '2004', title: 'Sudanese and Ethiopian Association — Goethe Institute', titleAr: 'الرابطة السودانية الإثيوبية — معهد غوته', detail: 'Group exhibition · Khartoum, Sudan', detailAr: 'معرض جماعي · الخرطوم، السودان' },
+    { year: '2002', title: 'Sudan National Museum', titleAr: 'المتحف الوطني السوداني', detail: 'Group exhibition with the British Council & College of Fine and Applied Art · Nov, Khartoum', detailAr: 'معرض جماعي مع المجلس الثقافي البريطاني وكلية الفنون الجميلة والتطبيقية · نوفمبر، الخرطوم' },
+    { year: '2002', title: 'Solo Exhibition — Goethe Institute', titleAr: 'معرض فردي — معهد غوته', detail: 'May, Khartoum, Sudan', detailAr: 'مايو، الخرطوم، السودان' },
+    { year: '2002', title: 'The Fifth Sudanese — Goethe Institute', titleAr: 'السوداني الخامس — معهد غوته', detail: 'Solo exhibition, Sudanese Plastic Artists General Union · Sep, Khartoum', detailAr: 'معرض فردي، الاتحاد العام للفنانين التشكيليين السودانيين · سبتمبر، الخرطوم' },
+    { year: '2000', title: '"New Diversity" — Group/Tour Exhibition', titleAr: '«تنوّع جديد» — معرض جماعي متنقل', detail: 'Taliesian Art Center & Abrader College, supported by the Arts Council of Wales · Nov, Cardiff, U.K.', detailAr: 'مركز تاليسيان للفنون وكلية أبرادر، بدعم من مجلس فنون ويلز · نوفمبر، كارديف، المملكة المتحدة' },
+    { year: '1998', title: 'Sudanese Art Vision Exhibition', titleAr: 'معرض رؤية الفن السوداني', detail: 'British Council Khartoum & College of Fine and Applied Art · Oct, Khartoum', detailAr: 'المجلس الثقافي البريطاني بالخرطوم وكلية الفنون الجميلة والتطبيقية · أكتوبر، الخرطوم' },
+    { year: '1997', title: 'Group Exhibition — Salon Damascus', titleAr: 'معرض جماعي — صالون دمشق', detail: 'May, Damascus, Syria', detailAr: 'مايو، دمشق، سوريا' },
+    { year: '1997', title: 'Solo Exhibition — British Council', titleAr: 'معرض فردي — المجلس الثقافي البريطاني', detail: 'Khartoum, Sudan', detailAr: 'الخرطوم، السودان' },
+    { year: '1997', title: 'Group Exhibition — Al Sharjah Museum', titleAr: 'معرض جماعي — متحف الشارقة', detail: 'United Arab Emirates', detailAr: 'الإمارات العربية المتحدة' },
+    { year: '1996', title: 'Group Exhibition — Russian Cultural Center', titleAr: 'معرض جماعي — المركز الثقافي الروسي', detail: 'Damascus, Syria', detailAr: 'دمشق، سوريا' },
+    { year: '1996', title: 'Group Exhibition — Arab Cultural Center', titleAr: 'معرض جماعي — المركز الثقافي العربي', detail: 'Damascus, Syria', detailAr: 'دمشق، سوريا' },
+    { year: '1996', title: 'Group Exhibition — French Center', titleAr: 'معرض جماعي — المركز الفرنسي', detail: 'May, Khartoum, Sudan', detailAr: 'مايو، الخرطوم، السودان' },
+    { year: '1996', title: 'UNICEF Workshop Exhibition — Hilton', titleAr: 'معرض ورشة اليونيسف — هيلتون', detail: 'Khartoum, Sudan', detailAr: 'الخرطوم، السودان' },
+    { year: '1995', title: 'Sudan Artist Exhibition', titleAr: 'معرض الفنان السوداني', detail: 'May, Abu Dhabi, United Arab Emirates', detailAr: 'مايو، أبوظبي، الإمارات العربية المتحدة' },
+    { year: '1994', title: 'Group Exhibition — Hilton', titleAr: 'معرض جماعي — هيلتون', detail: 'Oct, Khartoum, Sudan', detailAr: 'أكتوبر، الخرطوم، السودان' },
+    { year: '1994', title: 'Group Exhibition — Goethe Institute', titleAr: 'معرض جماعي — معهد غوته', detail: 'Mar, Khartoum, Sudan', detailAr: 'مارس، الخرطوم، السودان' },
+    { year: '1993', title: 'Alharthy Complex Muscat — Sultan Qaboos University', titleAr: 'مجمع الحارثي مسقط — جامعة السلطان قابوس', detail: 'Group exhibition · Sultanate of Oman', detailAr: 'معرض جماعي · سلطنة عُمان' },
+    { year: '1992', title: 'Solo Exhibition — College of Fine and Applied Art', titleAr: 'معرض فردي — كلية الفنون الجميلة والتطبيقية', detail: 'Khartoum, Sudan', detailAr: 'الخرطوم، السودان' },
+    { year: '1992', title: 'Group Exhibition — Hilton Khartoum', titleAr: 'معرض جماعي — هيلتون الخرطوم', detail: 'Oct, Khartoum, Sudan', detailAr: 'أكتوبر، الخرطوم، السودان' },
+    { year: '1992', title: 'Group Exhibition — Mora Art Gallery', titleAr: 'معرض جماعي — صالة مورا للفنون', detail: 'Khartoum, Sudan', detailAr: 'الخرطوم، السودان' },
+    { year: '1991', title: 'Group Exhibition — Italian Embassy', titleAr: 'معرض جماعي — السفارة الإيطالية', detail: 'Certificate for participation · Khartoum, Sudan', detailAr: 'شهادة مشاركة · الخرطوم، السودان' },
+    { year: '1988', title: 'Solo Exhibition — Alzawiya Institute of Fine Art for Girls', titleAr: 'معرض فردي — معهد الزاوية للفنون الجميلة للبنات', detail: 'Libya', detailAr: 'ليبيا' },
+    { year: '1987', title: 'Solo Exhibition — Hilton Khartoum', titleAr: 'معرض فردي — هيلتون الخرطوم', detail: 'Dec, Khartoum, Sudan', detailAr: 'ديسمبر، الخرطوم، السودان' },
+    { year: '1984', title: 'Group Exhibition — Peoples Gardens', titleAr: 'معرض جماعي — حدائق الشعب', detail: 'Khartoum, Sudan', detailAr: 'الخرطوم، السودان' },
+  ];
+
+  workshopsAwards = [
+    { year: '1999', title: 'Certificate of Contribution to Sudanese Contemporary Art', titleAr: 'شهادة إسهام في الفن السوداني المعاصر', detail: 'Sudanese Community Association of South Wales, U.K.', detailAr: 'رابطة الجالية السودانية بجنوب ويلز، المملكة المتحدة' },
+    { year: '1998', title: 'Workshop of Gender — Al-Ahfad University for Women', titleAr: 'ورشة النوع الاجتماعي — جامعة الأحفاد للبنات', detail: 'In cooperation with UNFPA · Mar–Apr, Omdurman, Sudan', detailAr: 'بالتعاون مع صندوق الأمم المتحدة للسكان · مارس–أبريل، أم درمان، السودان' },
+    { year: '1997', title: 'First Prize in Sculpture — Fourth National Culture Festival', titleAr: 'الجائزة الأولى في النحت — المهرجان القومي الرابع للثقافة', detail: 'Certificate from the Ministry of Culture and Information · Oct, Khartoum, Sudan', detailAr: 'شهادة من وزارة الثقافة والإعلام · أكتوبر، الخرطوم، السودان' },
+    { year: '1997', title: 'Certificate of Appreciation', titleAr: 'شهادة تقدير', detail: 'Department of Culture and Information, Government of Sharjah, U.A.E. · Sep', detailAr: 'دائرة الثقافة والإعلام، حكومة الشارقة، الإمارات العربية المتحدة · سبتمبر' },
+    { year: '1996', title: 'Introductory Training Course — Conservation and Restoration', titleAr: 'دورة تدريبية تمهيدية — الصون والترميم', detail: 'Sudan National Museum · Nov, Khartoum, Sudan', detailAr: 'المتحف الوطني السوداني · نوفمبر، الخرطوم، السودان' },
+    { year: '1993', title: 'Workshop of Sandstone Conservation', titleAr: 'ورشة صون الحجر الرملي', detail: 'Sudan National Museum · May, Khartoum, Sudan', detailAr: 'المتحف الوطني السوداني · مايو، الخرطوم، السودان' },
+  ];
+
+  publicArt = [
+    { year: '2014', title: 'Wood Relief', titleAr: 'بارز خشبي', detail: 'Public Palace of Sudan, Khartoum', detailAr: 'القصر الجمهوري السوداني، الخرطوم' },
+    { year: '2010', title: 'Cement Relief', titleAr: 'بارز إسمنتي', detail: 'Lela Art Gallery, Addis Ababa, Ethiopia', detailAr: 'صالة ليلا للفنون، أديس أبابا، إثيوبيا' },
+    { year: '2009', title: 'Wall Relief', titleAr: 'بارز جداري', detail: 'Central Bank of the Sudan, Khartoum', detailAr: 'بنك السودان المركزي، الخرطوم' },
+    { year: '2008', title: 'Abstract Statue', titleAr: 'تمثال تجريدي', detail: 'Tabco Company, Huria Street, Khartoum', detailAr: 'شركة تابكو، شارع الحرية، الخرطوم' },
+    { year: '2003', title: 'Plaster Relief', titleAr: 'بارز جصي', detail: 'Bisinose Company, Omdurman, Sudan', detailAr: 'شركة بيسينوز، أم درمان، السودان' },
+    { year: '2001', title: 'Plaster Relief', titleAr: 'بارز جصي', detail: 'Bisinose Company, Khartoum, Sudan', detailAr: 'شركة بيسينوز، الخرطوم، السودان' },
+    { year: '2001', title: 'Wood Relief', titleAr: 'بارز خشبي', detail: 'Al Shamal Islamic Bank, Khartoum', detailAr: 'بنك الشمال الإسلامي، الخرطوم' },
+    { year: '1999', title: 'Wood Reliefs — Sudanese Themes', titleAr: 'بوارز خشبية — موضوعات سودانية', detail: 'French Bank, Khartoum, Sudan', detailAr: 'البنك الفرنسي، الخرطوم، السودان' },
+    { year: '1997', title: 'Wall Relief', titleAr: 'بارز جداري', detail: 'Alkother Hotel, Shandi, Sudan', detailAr: 'فندق الكوثر، شندي، السودان' },
+  ];
+
+  collections = [
+    { year: '1997', place: 'Sharjah Museum, United Arab Emirates', placeAr: 'متحف الشارقة، الإمارات العربية المتحدة' },
+    { year: '1994', place: 'Sudan Embassy, Sultanate of Oman', placeAr: 'السفارة السودانية، سلطنة عُمان' },
+    { year: '1996', place: 'Sudan Embassy, Damascus, Syria', placeAr: 'السفارة السودانية، دمشق، سوريا' },
+    { year: '1999', place: 'Shan Hamza, U.K.', placeAr: 'شان حمزة، المملكة المتحدة' },
+    { year: '2000', place: 'Dara Gallery, Khartoum, Sudan', placeAr: 'صالة دارة للفنون، الخرطوم، السودان' },
+    { year: '2005', place: 'Rashed Diab Art Center, Khartoum, Sudan', placeAr: 'مركز راشد دياب للفنون، الخرطوم، السودان' },
+    { year: '2010', place: 'Sudan Embassy, Addis Ababa, Ethiopia', placeAr: 'السفارة السودانية، أديس أبابا، إثيوبيا' },
+  ];
+
+  exhibitionPhotos = [
+    { src: 'uploads/1b2637bad2bdbacb.jpg', position: 'center' },
+    { src: 'uploads/526d4314d11d2690.jpeg', position: 'center' },
+    { src: 'uploads/3fa90f73ea36f269.jpg', position: 'center 25%' },
+    { src: 'uploads/c0737b1bdddaaf0b.jpg', position: 'center' },
+    { src: 'uploads/f0db3ba96c94da38.jpg', position: 'center' },
+    { src: 'uploads/ba0af79ffe42e912.jpg', position: 'center' },
+  ];
+
+  recognitionPhotos = [
+    { src: 'uploads/435409904_1645030809237473_3516485486175227251_n.jpg', position: 'center 20%' },
+    { src: 'uploads/435893524_1645030872570800_9015325330386191362_n.jpg', position: 'center 20%' },
+    { src: 'uploads/435491301_1645030845904136_6273678761322544774_n.jpg', position: 'center 20%' },
+  ];
+
+  startAutoScroll() {
+    const step = () => {
+      if (this.railRefs) {
+        Object.values(this.railRefs).forEach((ref) => {
+          const el = ref.current;
+          if (!el || !(this._hoveredRails && this._hoveredRails.has(el))) return;
+          const oneSetWidth = el.scrollWidth / 3;
+          const dir = el.getAttribute('data-direction') === 'left' ? -1 : 1;
+          el.scrollLeft += 0.9 * dir;
+          if (el.scrollLeft >= oneSetWidth * 2) el.scrollLeft -= oneSetWidth;
+          if (el.scrollLeft <= 0) el.scrollLeft += oneSetWidth;
+        });
+      }
+      this._autoScrollFrame = requestAnimationFrame(step);
+    };
+    this._hoveredRails = new WeakSet();
+    this._autoScrollFrame = requestAnimationFrame(step);
+    document.querySelectorAll('[data-rail]').forEach((el) => {
+      el.scrollLeft = el.scrollWidth / 3;
+      el.addEventListener('mouseenter', () => this._hoveredRails.add(el));
+      el.addEventListener('mouseleave', () => this._hoveredRails.delete(el));
+    });
+  }
+
+  componentDidMount() {
+    setTimeout(() => this.startAutoScroll(), 500);
+    const reveal = (el) => {
+      el.style.opacity = '1';
+      el.style.transform = 'translateY(0)';
+    };
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          reveal(entry.target);
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    const observeAll = () => {
+      document.querySelectorAll('[data-reveal]:not([data-reveal-bound])').forEach((el) => {
+        el.setAttribute('data-reveal-bound', '1');
+        io.observe(el);
+      });
+    };
+    observeAll();
+    const mo = new MutationObserver(observeAll);
+    mo.observe(document.body, { childList: true, subtree: true });
+    this._revealMo = mo;
+    // Safety net: never leave the page stuck invisible if the observer misses an element.
+    this._revealFallback = setTimeout(() => {
+      document.querySelectorAll('[data-reveal]').forEach(reveal);
+    }, 1800);
+  }
+
+  componentWillUnmount() {
+    if (this._revealMo) this._revealMo.disconnect();
+    if (this._revealFallback) clearTimeout(this._revealFallback);
+    if (this._autoScrollFrame) cancelAnimationFrame(this._autoScrollFrame);
+  }
+
+  selectMedium(m) {
+    this.setState({ medium: m });
+  }
+
+  openWork(w) {
+    this.setState({ selectedWork: w, showBank: false });
+  }
+
+  closeWork() {
+    this.setState({ selectedWork: null, showBank: false });
+  }
+
+  toggleBank() {
+    this.setState((s) => ({ showBank: !s.showBank }));
+  }
+
+  toggleExhibitions() {
+    this.setState((s) => ({ showAllExhibitions: !s.showAllExhibitions }));
+  }
+
+  goHome() {
+    this.setState({ page: 'home' });
+  }
+
+  openArchive(e) {
+    if (e && e.preventDefault) e.preventDefault();
+    this.setState({ page: 'archive' });
+    window.scrollTo(0, 0);
+  }
+
+  closeArchive() {
+    this.setState({ page: 'home' });
+    window.scrollTo(0, 0);
+  }
+
+  openMedia(e) {
+    if (e && e.preventDefault) e.preventDefault();
+    this.setState({ page: 'media' });
+    window.scrollTo(0, 0);
+  }
+
+  openPrints(e) {
+    if (e && e.preventDefault) e.preventDefault();
+    this.setState({ page: 'prints' });
+    window.scrollTo(0, 0);
+  }
+
+  openClipping(m) {
+    this.setState({ selectedClipping: m });
+  }
+
+  closeClipping() {
+    this.setState({ selectedClipping: null });
+  }
+
+  openSizeGuide(sg) {
+    this.setState({ selectedSizeGuide: sg });
+  }
+
+  closeSizeGuide() {
+    this.setState({ selectedSizeGuide: null });
+  }
+
+  renderVals() {
+    const isAr = this.state.lang === 'ar';
+    const T = isAr ? this.i18n.ar : this.i18n.en;
+    const dir = isAr ? 'rtl' : 'ltr';
+    const dm = this.state.darkMode;
+    const themeVars = dm
+      ? `--bg-page:#14110c; --text-page:#ece6d8; --bg-nav:rgba(20,17,12,0.92); --border-nav:rgba(236,230,216,0.12); --bg-warm:#241d15; --bg-dark:#0e0c09; --text-on-dark:#ece6d8; --bg-card:#241d15; --font-body:${isAr ? "'Cairo',sans-serif" : "'Work Sans',sans-serif"}; --font-heading:${isAr ? "'Amiri',serif" : "'Cormorant Garamond',serif"};`
+      : `--bg-page:#f2ede2; --text-page:#231f19; --bg-nav:rgba(242,237,226,0.92); --border-nav:rgba(35,31,25,0.12); --bg-warm:#e9e1cf; --bg-dark:#231f19; --text-on-dark:#f2ede2; --bg-card:#f6f1e6; --font-body:${isAr ? "'Cairo',sans-serif" : "'Work Sans',sans-serif"}; --font-heading:${isAr ? "'Amiri',serif" : "'Cormorant Garamond',serif"};`;
+    const works = this.works.map((w, i) => {
+      const hasPhoto = w.hasPhoto !== false && !!w.image;
+      const titleOut = isAr ? (this.titleMapAr[w.title] || w.title) : w.title;
+      const techniqueOut = isAr ? (this.techniqueMapAr[w.technique] || w.technique) : w.technique;
+      const mediumOut = isAr ? (this.mediumNamesAr[w.medium] || w.medium) : w.medium;
+      const enriched = {
+        ...w,
+        title: titleOut,
+        technique: techniqueOut,
+        medium: mediumOut,
+        hasPhoto,
+        hasPhotoInverse: !hasPhoto,
+        image: w.image || '',
+        photoStyle: hasPhoto ? `background-image:url('${w.image}'); background-size:cover; background-position:center;` : 'display:none;',
+        caption: techniqueOut || w.year || '',
+        meta: `${mediumOut}${(techniqueOut || w.year) ? ' — ' + (techniqueOut || w.year) : ''}`,
+        priceLabel: w.price ? w.price : T.priceOnRequest,
+        dimensions: w.dimensions || T.dimensionsOnRequest,
+        paypalLink: `${this.paypalBase}`,
+        style: `background:repeating-linear-gradient(135deg, ${this.palette[i % this.palette.length][0]} 0px, ${this.palette[i % this.palette.length][0]} 2px, ${this.palette[i % this.palette.length][1]} 2px, ${this.palette[i % this.palette.length][1]} 4px);`,
+      };
+      enriched.onOpen = () => this.openWork(enriched);
+      return enriched;
+    });
+    const order = ['Painting', 'Sculpture', 'Drawing', 'Relief'];
+    if (!this.railRefs) this.railRefs = {};
+    const categories = order.map((medium, idx) => {
+      const items = works.filter(w => w.medium === (isAr ? (this.mediumNamesAr[medium] || medium) : medium));
+      if (!this.railRefs[medium]) this.railRefs[medium] = React.createRef();
+      const railRef = this.railRefs[medium];
+      const direction = idx % 2 === 0 ? 'right' : 'left';
+      return {
+        medium: isAr ? (this.mediumNamesAr[medium] || medium) : medium,
+        id: `works-${medium.toLowerCase()}`,
+        anchor: `#works-${medium.toLowerCase()}`,
+        count: `${items.length} ${isAr ? 'عمل' : 'work' + (items.length === 1 ? '' : 's')}`,
+        items,
+        railRef,
+        direction,
+        loopItems: items.length ? [...items, ...items, ...items] : items,
+        scrollPrev: () => railRef.current && railRef.current.scrollBy({ left: -600, behavior: 'smooth' }),
+        scrollNext: () => railRef.current && railRef.current.scrollBy({ left: 600, behavior: 'smooth' }),
+      };
+    });
+    const cardAnim = (i) => `animation:cardIn 0.7s cubic-bezier(0.16,1,0.3,1) both; animation-delay:${Math.min(i, 16) * 0.06}s;`;
+    const visibleExhibitions = (this.state.showAllExhibitions ? this.exhibitions : this.exhibitions.slice(0, 8))
+      .map((e, i) => ({ ...e, title: isAr ? (e.titleAr || e.title) : e.title, detail: isAr ? (e.detailAr || e.detail) : e.detail, cardStyle: cardAnim(i) }));
+    const workshopsAwards = this.workshopsAwards.map((w, i) => ({ ...w, title: isAr ? (w.titleAr || w.title) : w.title, detail: isAr ? (w.detailAr || w.detail) : w.detail, cardStyle: cardAnim(i) }));
+    const publicArt = this.publicArt.map((p, i) => ({ ...p, title: isAr ? (p.titleAr || p.title) : p.title, detail: isAr ? (p.detailAr || p.detail) : p.detail, cardStyle: cardAnim(i) }));
+    const collections = this.collections.map((c, i) => ({ ...c, place: isAr ? (c.placeAr || c.place) : c.place, cardStyle: cardAnim(i) }));
+    const navLabels = [T.navWorks, T.navBio, T.navArchive, T.navMedia, T.navPrints, T.navContact];
+    const navItems = this.navItems.map((item, i) => ({
+      ...item,
+      label: navLabels[i],
+      onClick: item.archive ? (e) => this.openArchive(e) : item.media ? (e) => this.openMedia(e) : item.prints ? (e) => this.openPrints(e) : () => this.goHome(),
+    }));
+    return {
+      T, isAr, dir, themeVars,
+      onToggleLang: () => this.toggleLang(),
+      onToggleDark: () => this.toggleDark(),
+      darkToggleLabel: dm ? T.lightBtn : T.darkBtn,
+      navItems,
+      categories,
+      exhibitions: visibleExhibitions,
+      exhibitionsToggleLabel: this.state.showAllExhibitions ? T.showFewer : T.showAll(this.exhibitions.length),
+      onToggleExhibitions: () => this.toggleExhibitions(),
+      onOpenArchive: (e) => this.openArchive(e),
+      onCloseArchive: () => this.closeArchive(),
+      homeDisplay: this.state.page === 'home' ? 'block' : 'none',
+      archiveDisplay: this.state.page === 'archive' ? 'block' : 'none',
+      mediaDisplay: this.state.page === 'media' ? 'block' : 'none',
+      printsDisplay: this.state.page === 'prints' ? 'block' : 'none',
+      printOptions: this.printOptions.map((p, i) => ({ ...p, name: isAr ? (p.nameAr || p.name) : p.name, desc: isAr ? (p.descAr || p.desc) : p.desc, cardStyle: cardAnim(i), iconPaths: (this.printIcons[p.icon] || '').split('||'), mockupStyle: p.mockup ? `background-image:url('${p.mockup}');` : '' })),
+      giftServices: this.giftServices.map((g, i) => ({ ...g, name: isAr ? (g.nameAr || g.name) : g.name, desc: isAr ? (g.descAr || g.desc) : g.desc, cardStyle: cardAnim(i) })),
+      professionalServices: this.professionalServices.map((s, i) => {
+        const expanded = this.state.expandedService === s.name;
+        return {
+          ...s,
+          name: isAr ? (s.nameAr || s.name) : s.name,
+          paragraphs: isAr ? (s.paragraphsAr || s.paragraphs) : s.paragraphs,
+          example: isAr ? (s.exampleAr || s.example) : s.example,
+          cardStyle: (expanded
+            ? `animation:none; transform:translateY(-14px) scale(1.05) rotate(2.5deg) skew(2.5deg); box-shadow:0 40px 80px rgba(0,0,0,0.55), 0 0 0 1px rgba(224,164,92,0.4); border-color:rgba(224,164,92,0.95); transition:transform 0.55s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.55s ease, border-color 0.55s ease, background-color 0.5s ease;`
+            : cardAnim(i) + ' transition:transform 0.55s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.45s ease, border-color 0.45s ease, background-color 0.5s ease;'),
+          slotHeight: '270px',
+          zIndex: expanded ? 40 : 1,
+          maxHeight: expanded ? '600px' : '96px',
+          bgAlpha: expanded ? 0.8 : 0.2,
+          bodyStyle: `opacity:${expanded ? 1 : 0.55}; transition:opacity 0.5s ease 0.1s;`,
+          toggleLabel: expanded ? T.showLess : T.readMore,
+          arrowStyle: `display:inline-block; margin-left:6px; transition:transform 0.4s cubic-bezier(0.34,1.56,0.64,1); transform:rotate(${expanded ? 180 : 0}deg);`,
+          onToggle: () => this.toggleService(s.name),
+        };
+      }),
+      sizeGuides: this.sizeGuides.map((sg, i) => ({ ...sg, cardStyle: cardAnim(i), bgStyle: `background-image:url('${sg.src}');`, onOpen: () => this.openSizeGuide(sg) })),
+      selectedSizeGuide: this.state.selectedSizeGuide
+        ? { ...this.state.selectedSizeGuide, bgStyle: `background-image:url('${this.state.selectedSizeGuide.src}');` }
+        : { alt: '', bgStyle: '' },
+      sizeGuideModalDisplay: this.state.selectedSizeGuide ? 'flex' : 'none',
+      onCloseSizeGuide: () => this.closeSizeGuide(),
+      mediaClippings: this.mediaClippings.map((m) => ({ ...m, caption: isAr ? (m.captionAr || m.caption) : m.caption, onOpen: () => this.openClipping(m) })),
+      selectedClipping: this.state.selectedClipping
+        ? { ...this.state.selectedClipping, caption: isAr ? (this.state.selectedClipping.captionAr || this.state.selectedClipping.caption) : this.state.selectedClipping.caption, bgStyle: `background-image:url('${this.state.selectedClipping.src}');` }
+        : { caption: '', bgStyle: '' },
+      clippingModalDisplay: this.state.selectedClipping ? 'flex' : 'none',
+      onCloseClipping: () => this.closeClipping(),
+      workshopsAwards,
+      publicArt,
+      collections,
+      modalDisplay: this.state.selectedWork ? 'flex' : 'none',
+      selectedWork: this.state.selectedWork || { title: '', meta: '', dimensions: '', priceLabel: '', medium: '', photoStyle: '', hasPhotoInverse: false },
+      showBank: this.state.showBank,
+      bankButtonLabel: this.state.showBank ? T.modalBankHide : T.modalBankShow,
+      bankDetails: this.bankDetails,
+      selectMedium: (m) => this.selectMedium(m),
+      openWork: (w) => this.openWork(w),
+      closeWork: () => this.closeWork(),
+      toggleBank: () => this.toggleBank(),
+      headingFontOverride: "var(--font-body)",
+      heroHeadingFont: "var(--font-body)",
+      stopProp: (e) => e.stopPropagation(),
+      instagramUrl: this.instagramUrl,
+      facebookUrl: this.facebookUrl,
+      inquiryName: this.state.inquiryName,
+      inquiryEmail: this.state.inquiryEmail,
+      inquiryMessage: this.state.inquiryMessage,
+      inquirySent: this.state.inquirySent,
+      onInquiryName: (e) => this.updateInquiry('inquiryName', e.target.value),
+      onInquiryEmail: (e) => this.updateInquiry('inquiryEmail', e.target.value),
+      onInquiryMessage: (e) => this.updateInquiry('inquiryMessage', e.target.value),
+      onSubmitInquiry: (e) => { e.preventDefault(); this.submitInquiry(); },
+    };
+  }
+}
+
+</script>
+</body>
+</html>
